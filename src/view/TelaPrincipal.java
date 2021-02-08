@@ -5,6 +5,7 @@
  */
 package view;
 
+import controller.TelaPrincipalController;
 import java.awt.CardLayout;
 import javax.swing.JMenuItem;
 
@@ -14,11 +15,13 @@ import javax.swing.JMenuItem;
  */
 public class TelaPrincipal extends javax.swing.JFrame {
 
+    private final TelaPrincipalController controller;
     /**
      * Creates new form TelaPrincipal
      */
     public TelaPrincipal() {
         initComponents();
+        controller = new TelaPrincipalController(this);
     }
 
     /**
@@ -53,26 +56,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jLabelPainel = new javax.swing.JLabel();
         jLabelImagemFundo = new javax.swing.JLabel();
         jPanelTelaAgendamentos = new javax.swing.JPanel();
-        jScrollPaneAgendamentos1 = new javax.swing.JScrollPane();
-        jTableAgendamentos1 = new javax.swing.JTable();
-        jLabelCliente1 = new javax.swing.JLabel();
-        jComboBoxCliente1 = new javax.swing.JComboBox<>();
-        jLabelBarbeiro1 = new javax.swing.JLabel();
-        jComboBoxBarbeiro1 = new javax.swing.JComboBox<>();
-        jLabelServico1 = new javax.swing.JLabel();
-        jComboBoxServico1 = new javax.swing.JComboBox<>();
-        jLabelValor1 = new javax.swing.JLabel();
-        jTextFieldValor1 = new javax.swing.JTextField();
-        jLabelValorData1 = new javax.swing.JLabel();
-        jFormattedTextFieldData1 = new javax.swing.JFormattedTextField();
-        jLabelValorHora1 = new javax.swing.JLabel();
-        jFormattedTextFieldHora1 = new javax.swing.JFormattedTextField();
-        jLabelObservacao1 = new javax.swing.JLabel();
-        jScrollPaneObservacao1 = new javax.swing.JScrollPane();
-        jTextAreaObservacao1 = new javax.swing.JTextArea();
-        jButtonAgendar1 = new javax.swing.JButton();
-        jButtonAgendar2 = new javax.swing.JButton();
-        jLabelPainel1 = new javax.swing.JLabel();
         jLabelImagemFundo1 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenuCadastro = new javax.swing.JMenu();
@@ -194,105 +177,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         jPanelTelaAgendamentos.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jTableAgendamentos1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "Cliente", "Barbeiro", "Servico", "Valor", "Data", "Hora", "Observacao"
-            }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false
-            };
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-        jScrollPaneAgendamentos1.setViewportView(jTableAgendamentos1);
-
-        jPanelTelaAgendamentos.add(jScrollPaneAgendamentos1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 337, 1150, 270));
-
-        jLabelCliente1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabelCliente1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabelCliente1.setText("Cliente");
-        jPanelTelaAgendamentos.add(jLabelCliente1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 40, -1, -1));
-
-        jComboBoxCliente1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "TEXTO" }));
-        jComboBoxCliente1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBoxCliente1ActionPerformed(evt);
-            }
-        });
-        jPanelTelaAgendamentos.add(jComboBoxCliente1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 30, 400, 40));
-
-        jLabelBarbeiro1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabelBarbeiro1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabelBarbeiro1.setText("Barbeiro");
-        jPanelTelaAgendamentos.add(jLabelBarbeiro1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 90, -1, -1));
-
-        jComboBoxBarbeiro1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "TEXTO" }));
-        jComboBoxBarbeiro1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBoxBarbeiro1ActionPerformed(evt);
-            }
-        });
-        jPanelTelaAgendamentos.add(jComboBoxBarbeiro1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 80, 400, 40));
-
-        jLabelServico1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabelServico1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabelServico1.setText("Serviço");
-        jPanelTelaAgendamentos.add(jLabelServico1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 140, -1, -1));
-
-        jComboBoxServico1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "TEXTO" }));
-        jComboBoxServico1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBoxServico1ActionPerformed(evt);
-            }
-        });
-        jPanelTelaAgendamentos.add(jComboBoxServico1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 130, 400, 40));
-
-        jLabelValor1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabelValor1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabelValor1.setText("Valor");
-        jPanelTelaAgendamentos.add(jLabelValor1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 190, -1, -1));
-        jPanelTelaAgendamentos.add(jTextFieldValor1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 180, 400, 40));
-
-        jLabelValorData1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabelValorData1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabelValorData1.setText("Data");
-        jPanelTelaAgendamentos.add(jLabelValorData1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 240, -1, -1));
-        jPanelTelaAgendamentos.add(jFormattedTextFieldData1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 230, 400, 40));
-
-        jLabelValorHora1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabelValorHora1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabelValorHora1.setText("Hora");
-        jPanelTelaAgendamentos.add(jLabelValorHora1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 290, -1, -1));
-        jPanelTelaAgendamentos.add(jFormattedTextFieldHora1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 280, 400, 40));
-
-        jLabelObservacao1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabelObservacao1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabelObservacao1.setText("Observação");
-        jPanelTelaAgendamentos.add(jLabelObservacao1, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 30, -1, -1));
-
-        jTextAreaObservacao1.setColumns(20);
-        jTextAreaObservacao1.setRows(5);
-        jScrollPaneObservacao1.setViewportView(jTextAreaObservacao1);
-
-        jPanelTelaAgendamentos.add(jScrollPaneObservacao1, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 70, 650, 200));
-
-        jButtonAgendar1.setBackground(new java.awt.Color(204, 255, 204));
-        jButtonAgendar1.setText("SALVAR");
-        jPanelTelaAgendamentos.add(jButtonAgendar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 280, 315, 40));
-
-        jButtonAgendar2.setBackground(new java.awt.Color(255, 204, 204));
-        jButtonAgendar2.setText("EXCLUIR");
-        jPanelTelaAgendamentos.add(jButtonAgendar2, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 280, 315, 40));
-
-        jLabelPainel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/Agenda-PainelFundo.png"))); // NOI18N
-        jPanelTelaAgendamentos.add(jLabelPainel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 1300, 610));
-
         jLabelImagemFundo1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/AgendaFundo.png"))); // NOI18N
         jPanelTelaAgendamentos.add(jLabelImagemFundo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1300, 630));
 
@@ -379,36 +263,24 @@ public class TelaPrincipal extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jMenuItemClienteActionPerformed
 
-    private void jComboBoxClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxClienteActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBoxClienteActionPerformed
-
-    private void jComboBoxBarbeiroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxBarbeiroActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBoxBarbeiroActionPerformed
-
-    private void jComboBoxServicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxServicoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBoxServicoActionPerformed
-
-    private void jComboBoxCliente1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxCliente1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBoxCliente1ActionPerformed
-
-    private void jComboBoxBarbeiro1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxBarbeiro1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBoxBarbeiro1ActionPerformed
-
-    private void jComboBoxServico1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxServico1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBoxServico1ActionPerformed
-
     private void jMenuItemAgendarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemAgendarActionPerformed
         
         CardLayout c1 = (CardLayout) jPanelTelaAgendar.getLayout();
         c1.show(jPanelTelaAgendar, "TelaAgendar");  
         
     }//GEN-LAST:event_jMenuItemAgendarActionPerformed
+
+    private void jComboBoxServicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxServicoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBoxServicoActionPerformed
+
+    private void jComboBoxBarbeiroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxBarbeiroActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBoxBarbeiroActionPerformed
+
+    private void jComboBoxClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxClienteActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBoxClienteActionPerformed
 
     /**
      * @param args the command line arguments
@@ -502,36 +374,21 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonAgendar;
-    private javax.swing.JButton jButtonAgendar1;
-    private javax.swing.JButton jButtonAgendar2;
     private javax.swing.JComboBox<Object> jComboBoxBarbeiro;
-    private javax.swing.JComboBox<Object> jComboBoxBarbeiro1;
     private javax.swing.JComboBox<Object> jComboBoxCliente;
-    private javax.swing.JComboBox<Object> jComboBoxCliente1;
     private javax.swing.JComboBox<Object> jComboBoxServico;
-    private javax.swing.JComboBox<Object> jComboBoxServico1;
     private javax.swing.JFormattedTextField jFormattedTextFieldData;
-    private javax.swing.JFormattedTextField jFormattedTextFieldData1;
     private javax.swing.JFormattedTextField jFormattedTextFieldHora;
-    private javax.swing.JFormattedTextField jFormattedTextFieldHora1;
     private javax.swing.JLabel jLabelBarbeiro;
-    private javax.swing.JLabel jLabelBarbeiro1;
     private javax.swing.JLabel jLabelCliente;
-    private javax.swing.JLabel jLabelCliente1;
     private javax.swing.JLabel jLabelImagemFundo;
     private javax.swing.JLabel jLabelImagemFundo1;
     private javax.swing.JLabel jLabelObservacao;
-    private javax.swing.JLabel jLabelObservacao1;
     private javax.swing.JLabel jLabelPainel;
-    private javax.swing.JLabel jLabelPainel1;
     private javax.swing.JLabel jLabelServico;
-    private javax.swing.JLabel jLabelServico1;
     private javax.swing.JLabel jLabelValor;
-    private javax.swing.JLabel jLabelValor1;
     private javax.swing.JLabel jLabelValorData;
-    private javax.swing.JLabel jLabelValorData1;
     private javax.swing.JLabel jLabelValorHora;
-    private javax.swing.JLabel jLabelValorHora1;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenu jMenuCadastro;
     private javax.swing.JMenuItem jMenuItemAgendamentos;
@@ -547,14 +404,9 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JPanel jPanelTelaAgendar;
     private javax.swing.JPanel jPanelTelaPrincipal;
     private javax.swing.JScrollPane jScrollPaneAgendamentos;
-    private javax.swing.JScrollPane jScrollPaneAgendamentos1;
     private javax.swing.JScrollPane jScrollPaneObservacao;
-    private javax.swing.JScrollPane jScrollPaneObservacao1;
     private javax.swing.JTable jTableAgendamentos;
-    private javax.swing.JTable jTableAgendamentos1;
     private javax.swing.JTextArea jTextAreaObservacao;
-    private javax.swing.JTextArea jTextAreaObservacao1;
     private javax.swing.JTextField jTextFieldValor;
-    private javax.swing.JTextField jTextFieldValor1;
     // End of variables declaration//GEN-END:variables
 }

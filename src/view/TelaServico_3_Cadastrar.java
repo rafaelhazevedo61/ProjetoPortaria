@@ -36,21 +36,11 @@ public class TelaServico_3_Cadastrar extends javax.swing.JFrame {
         jLabelValor = new javax.swing.JLabel();
         jFormattedTextFieldValor = new javax.swing.JFormattedTextField();
         jLabelServico = new javax.swing.JLabel();
-        jButtonLimpar = new javax.swing.JButton();
+        jButtonVoltar = new javax.swing.JButton();
         jButtonCadastrar = new javax.swing.JButton();
+        jButtonLimpar = new javax.swing.JButton();
         jLabelPainel = new javax.swing.JLabel();
         jLabelImagemFundo = new javax.swing.JLabel();
-        jMenuBar1 = new javax.swing.JMenuBar();
-        jMenuCadastro = new javax.swing.JMenu();
-        jMenuItemClientes = new javax.swing.JMenuItem();
-        jMenuItemBarbeiro = new javax.swing.JMenuItem();
-        jMenuItemServico = new javax.swing.JMenuItem();
-        jMenuItemUsuario = new javax.swing.JMenuItem();
-        jMenuOperacao = new javax.swing.JMenu();
-        jMenuItemAgendar = new javax.swing.JMenuItem();
-        jMenuItemAgendamentos = new javax.swing.JMenuItem();
-        jMenuRelatorio = new javax.swing.JMenu();
-        jMenuSair = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -80,13 +70,17 @@ public class TelaServico_3_Cadastrar extends javax.swing.JFrame {
         jLabelServico.setText("Serviço");
         getContentPane().add(jLabelServico, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 150, -1, -1));
 
-        jButtonLimpar.setBackground(new java.awt.Color(255, 255, 204));
-        jButtonLimpar.setText("Limpar");
-        getContentPane().add(jButtonLimpar, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 450, 330, 40));
+        jButtonVoltar.setBackground(new java.awt.Color(255, 255, 204));
+        jButtonVoltar.setText("Voltar");
+        getContentPane().add(jButtonVoltar, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 500, 330, 40));
 
         jButtonCadastrar.setBackground(new java.awt.Color(204, 255, 204));
         jButtonCadastrar.setText("Cadastrar");
         getContentPane().add(jButtonCadastrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 400, 330, 40));
+
+        jButtonLimpar.setBackground(new java.awt.Color(255, 204, 204));
+        jButtonLimpar.setText("Limpar");
+        getContentPane().add(jButtonLimpar, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 450, 330, 40));
 
         jLabelPainel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/Agenda-PainelFundo.png"))); // NOI18N
         getContentPane().add(jLabelPainel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 1300, 610));
@@ -94,58 +88,9 @@ public class TelaServico_3_Cadastrar extends javax.swing.JFrame {
         jLabelImagemFundo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/AgendaFundo.png"))); // NOI18N
         getContentPane().add(jLabelImagemFundo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1300, 630));
 
-        jMenuCadastro.setText("Cadastro");
-
-        jMenuItemClientes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/icones/cliente-icon.png"))); // NOI18N
-        jMenuItemClientes.setText("Cliente");
-        jMenuCadastro.add(jMenuItemClientes);
-
-        jMenuItemBarbeiro.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/icones/cliente-icon.png"))); // NOI18N
-        jMenuItemBarbeiro.setText("Barbeiro");
-        jMenuCadastro.add(jMenuItemBarbeiro);
-
-        jMenuItemServico.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/icones/tesoura-icon.png"))); // NOI18N
-        jMenuItemServico.setText("Serviço");
-        jMenuCadastro.add(jMenuItemServico);
-
-        jMenuItemUsuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/icones/usuario-icon.png"))); // NOI18N
-        jMenuItemUsuario.setText("Usuario");
-        jMenuCadastro.add(jMenuItemUsuario);
-
-        jMenuBar1.add(jMenuCadastro);
-
-        jMenuOperacao.setText("Operação");
-
-        jMenuItemAgendar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/icones/agenda-icon.png"))); // NOI18N
-        jMenuItemAgendar.setText("Agendar");
-        jMenuOperacao.add(jMenuItemAgendar);
-
-        jMenuItemAgendamentos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/icones/agenda-icon.png"))); // NOI18N
-        jMenuItemAgendamentos.setText("Agendamentos");
-        jMenuItemAgendamentos.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItemAgendamentosActionPerformed(evt);
-            }
-        });
-        jMenuOperacao.add(jMenuItemAgendamentos);
-
-        jMenuBar1.add(jMenuOperacao);
-
-        jMenuRelatorio.setText("Relatório");
-        jMenuBar1.add(jMenuRelatorio);
-
-        jMenuSair.setText("Sair");
-        jMenuBar1.add(jMenuSair);
-
-        setJMenuBar(jMenuBar1);
-
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jMenuItemAgendamentosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemAgendamentosActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItemAgendamentosActionPerformed
 
     /**
      * @param args the command line arguments
@@ -313,23 +258,13 @@ public class TelaServico_3_Cadastrar extends javax.swing.JFrame {
     private javax.swing.ButtonGroup buttonGroup;
     private javax.swing.JButton jButtonCadastrar;
     private javax.swing.JButton jButtonLimpar;
+    private javax.swing.JButton jButtonVoltar;
     private javax.swing.JFormattedTextField jFormattedTextFieldValor;
     private javax.swing.JLabel jLabelImagemFundo;
     private javax.swing.JLabel jLabelObservacao;
     private javax.swing.JLabel jLabelPainel;
     private javax.swing.JLabel jLabelServico;
     private javax.swing.JLabel jLabelValor;
-    private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenu jMenuCadastro;
-    private javax.swing.JMenuItem jMenuItemAgendamentos;
-    private javax.swing.JMenuItem jMenuItemAgendar;
-    private javax.swing.JMenuItem jMenuItemBarbeiro;
-    private javax.swing.JMenuItem jMenuItemClientes;
-    private javax.swing.JMenuItem jMenuItemServico;
-    private javax.swing.JMenuItem jMenuItemUsuario;
-    private javax.swing.JMenu jMenuOperacao;
-    private javax.swing.JMenu jMenuRelatorio;
-    private javax.swing.JMenu jMenuSair;
     private javax.swing.JScrollPane jScrollPaneObservacao;
     private javax.swing.JTextArea jTextAreaObservacao;
     private javax.swing.JTextField jTextFieldServico;

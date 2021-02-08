@@ -51,7 +51,8 @@ public class TelaAgendamentos extends javax.swing.JFrame {
         jScrollPaneObservacao = new javax.swing.JScrollPane();
         jTextAreaObservacao = new javax.swing.JTextArea();
         jButtonAgendar = new javax.swing.JButton();
-        jButtonAgendar2 = new javax.swing.JButton();
+        jButtonExcluir = new javax.swing.JButton();
+        jButtonVoltar = new javax.swing.JButton();
         jLabelPainel = new javax.swing.JLabel();
         jLabelImagemFundo = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
@@ -168,11 +169,15 @@ public class TelaAgendamentos extends javax.swing.JFrame {
 
         jButtonAgendar.setBackground(new java.awt.Color(204, 255, 204));
         jButtonAgendar.setText("SALVAR");
-        getContentPane().add(jButtonAgendar, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 280, 315, 40));
+        getContentPane().add(jButtonAgendar, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 280, 200, 40));
 
-        jButtonAgendar2.setBackground(new java.awt.Color(255, 204, 204));
-        jButtonAgendar2.setText("EXCLUIR");
-        getContentPane().add(jButtonAgendar2, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 280, 315, 40));
+        jButtonExcluir.setBackground(new java.awt.Color(255, 204, 204));
+        jButtonExcluir.setText("EXCLUIR");
+        getContentPane().add(jButtonExcluir, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 280, 200, 40));
+
+        jButtonVoltar.setBackground(new java.awt.Color(255, 255, 204));
+        jButtonVoltar.setText("VOLTAR");
+        getContentPane().add(jButtonVoltar, new org.netbeans.lib.awtextra.AbsoluteConstraints(1020, 280, 200, 40));
 
         jLabelPainel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/Agenda-PainelFundo.png"))); // NOI18N
         getContentPane().add(jLabelPainel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 1300, 610));
@@ -404,7 +409,8 @@ public class TelaAgendamentos extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonAgendar;
-    private javax.swing.JButton jButtonAgendar2;
+    private javax.swing.JButton jButtonExcluir;
+    private javax.swing.JButton jButtonVoltar;
     private javax.swing.JComboBox<Object> jComboBoxBarbeiro;
     private javax.swing.JComboBox<Object> jComboBoxCliente;
     private javax.swing.JComboBox<Object> jComboBoxServico;

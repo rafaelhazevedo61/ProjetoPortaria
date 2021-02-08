@@ -6,7 +6,6 @@
 package view;
 
 import controller.TelaAgendarController;
-import javax.swing.JMenuItem;
 
 /**
  *
@@ -50,19 +49,9 @@ public class TelaAgendar extends javax.swing.JFrame {
         jScrollPaneObservacao = new javax.swing.JScrollPane();
         jTextAreaObservacao = new javax.swing.JTextArea();
         jButtonAgendar = new javax.swing.JButton();
+        jButtonVoltar = new javax.swing.JButton();
         jLabelPainel = new javax.swing.JLabel();
         jLabelImagemFundo = new javax.swing.JLabel();
-        jMenuBar1 = new javax.swing.JMenuBar();
-        jMenuCadastro = new javax.swing.JMenu();
-        jMenuItemCliente = new javax.swing.JMenuItem();
-        jMenuItemBarbeiro = new javax.swing.JMenuItem();
-        jMenuItemServico = new javax.swing.JMenuItem();
-        jMenuItemUsuario = new javax.swing.JMenuItem();
-        jMenuOperacao = new javax.swing.JMenu();
-        jMenuItemAgendar = new javax.swing.JMenuItem();
-        jMenuItemAgendamentos = new javax.swing.JMenuItem();
-        jMenuRelatorio = new javax.swing.JMenu();
-        jMenuSair = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -166,63 +155,17 @@ public class TelaAgendar extends javax.swing.JFrame {
 
         jButtonAgendar.setBackground(new java.awt.Color(204, 255, 204));
         jButtonAgendar.setText("Agendar");
-        getContentPane().add(jButtonAgendar, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 280, 650, 40));
+        getContentPane().add(jButtonAgendar, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 280, 320, 40));
+
+        jButtonVoltar.setBackground(new java.awt.Color(255, 255, 204));
+        jButtonVoltar.setText("Voltar");
+        getContentPane().add(jButtonVoltar, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 280, 320, 40));
 
         jLabelPainel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/Agenda-PainelFundo.png"))); // NOI18N
         getContentPane().add(jLabelPainel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 1300, 610));
 
         jLabelImagemFundo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/AgendaFundo.png"))); // NOI18N
         getContentPane().add(jLabelImagemFundo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1300, 630));
-
-        jMenuCadastro.setText("Cadastro");
-
-        jMenuItemCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/icones/cliente-icon.png"))); // NOI18N
-        jMenuItemCliente.setText("Cliente");
-        jMenuItemCliente.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItemClienteActionPerformed(evt);
-            }
-        });
-        jMenuCadastro.add(jMenuItemCliente);
-
-        jMenuItemBarbeiro.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/icones/cliente-icon.png"))); // NOI18N
-        jMenuItemBarbeiro.setText("Barbeiro");
-        jMenuCadastro.add(jMenuItemBarbeiro);
-
-        jMenuItemServico.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/icones/tesoura-icon.png"))); // NOI18N
-        jMenuItemServico.setText("Serviço");
-        jMenuCadastro.add(jMenuItemServico);
-
-        jMenuItemUsuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/icones/usuario-icon.png"))); // NOI18N
-        jMenuItemUsuario.setText("Usuario");
-        jMenuCadastro.add(jMenuItemUsuario);
-
-        jMenuBar1.add(jMenuCadastro);
-
-        jMenuOperacao.setText("Operação");
-
-        jMenuItemAgendar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/icones/agenda-icon.png"))); // NOI18N
-        jMenuItemAgendar.setText("Agendar");
-        jMenuOperacao.add(jMenuItemAgendar);
-
-        jMenuItemAgendamentos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/icones/agenda-icon.png"))); // NOI18N
-        jMenuItemAgendamentos.setText("Agendamentos");
-        jMenuItemAgendamentos.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItemAgendamentosActionPerformed(evt);
-            }
-        });
-        jMenuOperacao.add(jMenuItemAgendamentos);
-
-        jMenuBar1.add(jMenuOperacao);
-
-        jMenuRelatorio.setText("Relatório");
-        jMenuBar1.add(jMenuRelatorio);
-
-        jMenuSair.setText("Sair");
-        jMenuBar1.add(jMenuSair);
-
-        setJMenuBar(jMenuBar1);
 
         pack();
         setLocationRelativeTo(null);
@@ -239,42 +182,7 @@ public class TelaAgendar extends javax.swing.JFrame {
     private void jComboBoxBarbeiroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxBarbeiroActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jComboBoxBarbeiroActionPerformed
-
-    private void jMenuItemAgendamentosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemAgendamentosActionPerformed
-                
-        controller.menuAgendamentos();
-        
-    }//GEN-LAST:event_jMenuItemAgendamentosActionPerformed
-
-    private void jMenuItemClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemClienteActionPerformed
-                
-        controller.menuCliente();
-        
-    }//GEN-LAST:event_jMenuItemClienteActionPerformed
-   
-    private void jMenuItemBarbeiroActionPerformed(java.awt.event.ActionEvent evt) {                                                  
-        
-        controller.menuBarbeiro();
-        
-    }                                                 
-
-    private void jMenuItemServicoActionPerformed(java.awt.event.ActionEvent evt) {                                                 
-        
-        controller.menuServico();
-        
-    }                                                
-
-    private void jMenuItemUsuarioActionPerformed(java.awt.event.ActionEvent evt) {                                                 
-        
-        controller.menuUsuario();
-        
-    }                                                
-
-    private void jMenuItemAgendarActionPerformed(java.awt.event.ActionEvent evt) {                                                 
-        
-        controller.menuAgendar();
-        
-    }           
+           
     /**
      * @param args the command line arguments
      */
@@ -312,57 +220,10 @@ public class TelaAgendar extends javax.swing.JFrame {
             }
         });
     }
-    
-    public JMenuItem getjMenuItemAgendamentos() {
-        return jMenuItemAgendamentos;
-    }
-
-    public void setjMenuItemAgendamentos(JMenuItem jMenuItemAgendamentos) {
-        this.jMenuItemAgendamentos = jMenuItemAgendamentos;
-    }
-
-    public JMenuItem getjMenuItemAgendar() {
-        return jMenuItemAgendar;
-    }
-
-    public void setjMenuItemAgendar(JMenuItem jMenuItemAgendar) {
-        this.jMenuItemAgendar = jMenuItemAgendar;
-    }
-
-    public JMenuItem getjMenuItemBarbeiro() {
-        return jMenuItemBarbeiro;
-    }
-
-    public void setjMenuItemBarbeiro(JMenuItem jMenuItemBarbeiro) {
-        this.jMenuItemBarbeiro = jMenuItemBarbeiro;
-    }
-
-    public JMenuItem getjMenuItemCliente() {
-        return jMenuItemCliente;
-    }
-
-    public void setjMenuItemCliente(JMenuItem jMenuItemCliente) {
-        this.jMenuItemCliente = jMenuItemCliente;
-    }
-
-    public JMenuItem getjMenuItemServico() {
-        return jMenuItemServico;
-    }
-
-    public void setjMenuItemServico(JMenuItem jMenuItemServico) {
-        this.jMenuItemServico = jMenuItemServico;
-    }
-
-    public JMenuItem getjMenuItemUsuario() {
-        return jMenuItemUsuario;
-    }
-
-    public void setjMenuItemUsuario(JMenuItem jMenuItemUsuario) {
-        this.jMenuItemUsuario = jMenuItemUsuario;
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonAgendar;
+    private javax.swing.JButton jButtonVoltar;
     private javax.swing.JComboBox<Object> jComboBoxBarbeiro;
     private javax.swing.JComboBox<Object> jComboBoxCliente;
     private javax.swing.JComboBox<Object> jComboBoxServico;
@@ -377,17 +238,6 @@ public class TelaAgendar extends javax.swing.JFrame {
     private javax.swing.JLabel jLabelValor;
     private javax.swing.JLabel jLabelValorData;
     private javax.swing.JLabel jLabelValorHora;
-    private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenu jMenuCadastro;
-    private javax.swing.JMenuItem jMenuItemAgendamentos;
-    private javax.swing.JMenuItem jMenuItemAgendar;
-    private javax.swing.JMenuItem jMenuItemBarbeiro;
-    private javax.swing.JMenuItem jMenuItemCliente;
-    private javax.swing.JMenuItem jMenuItemServico;
-    private javax.swing.JMenuItem jMenuItemUsuario;
-    private javax.swing.JMenu jMenuOperacao;
-    private javax.swing.JMenu jMenuRelatorio;
-    private javax.swing.JMenu jMenuSair;
     private javax.swing.JScrollPane jScrollPaneAgendamentos;
     private javax.swing.JScrollPane jScrollPaneObservacao;
     private javax.swing.JTable jTableAgendamentos;
