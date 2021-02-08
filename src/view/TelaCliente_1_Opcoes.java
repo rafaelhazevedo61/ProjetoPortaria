@@ -33,6 +33,7 @@ public class TelaCliente_1_Opcoes extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabelMensagem1 = new javax.swing.JLabel();
         jLabelMensagem = new javax.swing.JLabel();
         jButtonCadastrar = new javax.swing.JButton();
         jButtonAlterarExcluir = new javax.swing.JButton();
@@ -42,6 +43,11 @@ public class TelaCliente_1_Opcoes extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabelMensagem1.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
+        jLabelMensagem1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabelMensagem1.setText("Clientes");
+        getContentPane().add(jLabelMensagem1, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 150, -1, -1));
 
         jLabelMensagem.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
         jLabelMensagem.setForeground(new java.awt.Color(255, 255, 255));
@@ -151,6 +157,7 @@ public class TelaCliente_1_Opcoes extends javax.swing.JFrame {
     private javax.swing.JButton jButtonVoltar;
     private javax.swing.JLabel jLabelImagemFundo;
     private javax.swing.JLabel jLabelMensagem;
+    private javax.swing.JLabel jLabelMensagem1;
     private javax.swing.JLabel jLabelPainel;
     // End of variables declaration//GEN-END:variables
 }
