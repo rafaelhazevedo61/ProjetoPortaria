@@ -5,17 +5,23 @@
  */
 package view;
 
+import controller.TelaBarbeiro_1_OpcoesController;
+
 /**
  *
  * @author Rafael
  */
 public class TelaBarbeiro_1_Opcoes extends javax.swing.JFrame {
 
+    private final TelaBarbeiro_1_OpcoesController controller;
+    
     /**
      * Creates new form TelaPrincipal
      */
     public TelaBarbeiro_1_Opcoes() {
         initComponents();
+        controller = new TelaBarbeiro_1_OpcoesController(this);
+        
     }
 
     /**
@@ -30,7 +36,7 @@ public class TelaBarbeiro_1_Opcoes extends javax.swing.JFrame {
         jLabelMensagem = new javax.swing.JLabel();
         jButtonAlterarExcluir = new javax.swing.JButton();
         jButtonCadastrar = new javax.swing.JButton();
-        jButtonAlterarExcluir1 = new javax.swing.JButton();
+        jButtonVoltar = new javax.swing.JButton();
         jLabelPainel = new javax.swing.JLabel();
         jLabelImagemFundo = new javax.swing.JLabel();
 
@@ -44,15 +50,30 @@ public class TelaBarbeiro_1_Opcoes extends javax.swing.JFrame {
 
         jButtonAlterarExcluir.setBackground(new java.awt.Color(255, 204, 204));
         jButtonAlterarExcluir.setText("Alterar ou Excluir Barbeiro");
+        jButtonAlterarExcluir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonAlterarExcluirActionPerformed(evt);
+            }
+        });
         getContentPane().add(jButtonAlterarExcluir, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 370, 400, 40));
 
         jButtonCadastrar.setBackground(new java.awt.Color(204, 255, 204));
         jButtonCadastrar.setText("Cadastrar Novo Barbeiro");
+        jButtonCadastrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonCadastrarActionPerformed(evt);
+            }
+        });
         getContentPane().add(jButtonCadastrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 320, 400, 40));
 
-        jButtonAlterarExcluir1.setBackground(new java.awt.Color(255, 255, 204));
-        jButtonAlterarExcluir1.setText("Voltar");
-        getContentPane().add(jButtonAlterarExcluir1, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 420, 400, 40));
+        jButtonVoltar.setBackground(new java.awt.Color(255, 255, 204));
+        jButtonVoltar.setText("Voltar");
+        jButtonVoltar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonVoltarActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButtonVoltar, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 420, 400, 40));
 
         jLabelPainel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/Agenda-PainelFundo.png"))); // NOI18N
         getContentPane().add(jLabelPainel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 1300, 610));
@@ -63,6 +84,24 @@ public class TelaBarbeiro_1_Opcoes extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButtonVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonVoltarActionPerformed
+        
+        controller.botaoVoltar();
+        
+    }//GEN-LAST:event_jButtonVoltarActionPerformed
+
+    private void jButtonCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCadastrarActionPerformed
+        
+        controller.botaoCadastrar();
+        
+    }//GEN-LAST:event_jButtonCadastrarActionPerformed
+
+    private void jButtonAlterarExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAlterarExcluirActionPerformed
+        
+        controller.botaoAlterarExcluir();
+        
+    }//GEN-LAST:event_jButtonAlterarExcluirActionPerformed
                                                   
    
     /**
@@ -133,8 +172,8 @@ public class TelaBarbeiro_1_Opcoes extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonAlterarExcluir;
-    private javax.swing.JButton jButtonAlterarExcluir1;
     private javax.swing.JButton jButtonCadastrar;
+    private javax.swing.JButton jButtonVoltar;
     private javax.swing.JLabel jLabelImagemFundo;
     private javax.swing.JLabel jLabelMensagem;
     private javax.swing.JLabel jLabelPainel;

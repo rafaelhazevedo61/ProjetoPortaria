@@ -5,17 +5,22 @@
  */
 package view;
 
+import controller.TelaServico_2_AlterarExcluirController;
+
 /**
  *
  * @author Rafael
  */
 public class TelaServico_2_AlterarExcluir extends javax.swing.JFrame {
 
+    private final TelaServico_2_AlterarExcluirController controller;
+    
     /**
      * Creates new form TelaPrincipal
      */
     public TelaServico_2_AlterarExcluir() {
         initComponents();
+        controller = new TelaServico_2_AlterarExcluirController(this);
         
     }
     
@@ -100,6 +105,11 @@ public class TelaServico_2_AlterarExcluir extends javax.swing.JFrame {
 
         jButtonVoltar.setBackground(new java.awt.Color(255, 255, 204));
         jButtonVoltar.setText("Voltar");
+        jButtonVoltar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonVoltarActionPerformed(evt);
+            }
+        });
         getContentPane().add(jButtonVoltar, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 570, 330, 40));
 
         jButtonSalvar.setBackground(new java.awt.Color(204, 255, 204));
@@ -119,6 +129,12 @@ public class TelaServico_2_AlterarExcluir extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButtonVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonVoltarActionPerformed
+        
+        controller.botaoVoltar();
+        
+    }//GEN-LAST:event_jButtonVoltarActionPerformed
 
     /**
      * @param args the command line arguments

@@ -5,17 +5,23 @@
  */
 package view;
 
+import controller.TelaCliente_1_OpcoesController;
+
 /**
  *
  * @author Rafael
  */
 public class TelaCliente_1_Opcoes extends javax.swing.JFrame {
 
+    private final TelaCliente_1_OpcoesController controller;
+    
     /**
      * Creates new form TelaPrincipal
      */
     public TelaCliente_1_Opcoes() {
         initComponents();
+        controller = new TelaCliente_1_OpcoesController(this);
+        
     }
 
     /**
@@ -44,14 +50,29 @@ public class TelaCliente_1_Opcoes extends javax.swing.JFrame {
 
         jButtonCadastrar.setBackground(new java.awt.Color(204, 255, 204));
         jButtonCadastrar.setText("Cadastrar Novo Cliente");
+        jButtonCadastrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonCadastrarActionPerformed(evt);
+            }
+        });
         getContentPane().add(jButtonCadastrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 320, 400, 40));
 
         jButtonAlterarExcluir.setBackground(new java.awt.Color(255, 204, 204));
         jButtonAlterarExcluir.setText("Alterar ou Excluir Cliente");
+        jButtonAlterarExcluir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonAlterarExcluirActionPerformed(evt);
+            }
+        });
         getContentPane().add(jButtonAlterarExcluir, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 370, 400, 40));
 
         jButtonVoltar.setBackground(new java.awt.Color(255, 255, 204));
         jButtonVoltar.setText("Voltar");
+        jButtonVoltar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonVoltarActionPerformed(evt);
+            }
+        });
         getContentPane().add(jButtonVoltar, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 420, 400, 40));
 
         jLabelPainel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/Agenda-PainelFundo.png"))); // NOI18N
@@ -63,6 +84,24 @@ public class TelaCliente_1_Opcoes extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButtonVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonVoltarActionPerformed
+        
+        controller.botaoVoltar();
+        
+    }//GEN-LAST:event_jButtonVoltarActionPerformed
+
+    private void jButtonCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCadastrarActionPerformed
+        
+        controller.botaoCadastrar();
+        
+    }//GEN-LAST:event_jButtonCadastrarActionPerformed
+
+    private void jButtonAlterarExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAlterarExcluirActionPerformed
+        
+        controller.botaoAlterarExcluir();
+        
+    }//GEN-LAST:event_jButtonAlterarExcluirActionPerformed
 
     /**
      * @param args the command line arguments

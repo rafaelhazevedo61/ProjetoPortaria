@@ -5,17 +5,22 @@
  */
 package view;
 
+import controller.TelaBarbeiro_2_AlterarExcluirController;
+
 /**
  *
  * @author Rafael
  */
-public class TelaBarbeiro_2_AlterarExcluir extends javax.swing.JFrame {
+public final class TelaBarbeiro_2_AlterarExcluir extends javax.swing.JFrame {
 
+    private final TelaBarbeiro_2_AlterarExcluirController controller;
+    
     /**
      * Creates new form TelaPrincipal
      */
     public TelaBarbeiro_2_AlterarExcluir() {
         initComponents();
+        controller = new TelaBarbeiro_2_AlterarExcluirController(this);
         
         jRadioButtons();
                 
@@ -238,6 +243,11 @@ public class TelaBarbeiro_2_AlterarExcluir extends javax.swing.JFrame {
 
         jButtonVoltar.setBackground(new java.awt.Color(255, 255, 204));
         jButtonVoltar.setText("Voltar");
+        jButtonVoltar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonVoltarActionPerformed(evt);
+            }
+        });
         getContentPane().add(jButtonVoltar, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 570, 330, 40));
 
         jLabelPainel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/Agenda-PainelFundo.png"))); // NOI18N
@@ -271,6 +281,12 @@ public class TelaBarbeiro_2_AlterarExcluir extends javax.swing.JFrame {
     private void jFormattedTextFieldContato2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFormattedTextFieldContato2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jFormattedTextFieldContato2ActionPerformed
+
+    private void jButtonVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonVoltarActionPerformed
+        
+        controller.botaoVoltar();
+        
+    }//GEN-LAST:event_jButtonVoltarActionPerformed
 
     /**
      * @param args the command line arguments

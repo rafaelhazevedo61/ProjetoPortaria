@@ -5,30 +5,28 @@
  */
 package controller;
 
-import view.TelaAgendar;
-import view.TelaPrincipal;
+import view.TelaUsuario_1_Opcoes;
+import view.TelaUsuario_2_AlterarExcluir;
 
 /**
  *
  * @author Rafael
  */
-public class TelaAgendarController {
+public class TelaUsuario_2_AlterarExcluirController {
             
-    private TelaAgendar view;
+    private TelaUsuario_2_AlterarExcluir view;
  
     //CONSTRUTOR
-    public TelaAgendarController(TelaAgendar view) {
+    public TelaUsuario_2_AlterarExcluirController(TelaUsuario_2_AlterarExcluir view) {
         this.view = view;
     }
-
-    //BOTAO VOLTAR - INICIO
+    
     public void botaoVoltar() {
         
-        TelaPrincipal telaPrincipal = new TelaPrincipal();
-        telaPrincipal.setVisible(true);
+        TelaUsuario_1_Opcoes tela = new TelaUsuario_1_Opcoes();
+        tela.setVisible(true);
         view.dispose();
         
     }
-    //BOTAO VOLTAR - FIM
     
 }

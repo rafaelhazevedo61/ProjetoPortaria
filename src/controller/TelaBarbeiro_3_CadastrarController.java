@@ -5,30 +5,29 @@
  */
 package controller;
 
-import view.TelaAgendar;
+import view.TelaBarbeiro_1_Opcoes;
+import view.TelaBarbeiro_3_Cadastrar;
 import view.TelaPrincipal;
 
 /**
  *
  * @author Rafael
  */
-public class TelaAgendarController {
-            
-    private TelaAgendar view;
+public class TelaBarbeiro_3_CadastrarController {
+                
+    private TelaBarbeiro_3_Cadastrar view;
  
     //CONSTRUTOR
-    public TelaAgendarController(TelaAgendar view) {
+    public TelaBarbeiro_3_CadastrarController(TelaBarbeiro_3_Cadastrar view) {
         this.view = view;
     }
-
-    //BOTAO VOLTAR - INICIO
+    
     public void botaoVoltar() {
         
-        TelaPrincipal telaPrincipal = new TelaPrincipal();
-        telaPrincipal.setVisible(true);
+        TelaBarbeiro_1_Opcoes tela = new TelaBarbeiro_1_Opcoes();
+        tela.setVisible(true);
         view.dispose();
         
     }
-    //BOTAO VOLTAR - FIM
     
 }

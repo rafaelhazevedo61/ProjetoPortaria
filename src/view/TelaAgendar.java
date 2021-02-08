@@ -159,6 +159,11 @@ public class TelaAgendar extends javax.swing.JFrame {
 
         jButtonVoltar.setBackground(new java.awt.Color(255, 255, 204));
         jButtonVoltar.setText("Voltar");
+        jButtonVoltar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonVoltarActionPerformed(evt);
+            }
+        });
         getContentPane().add(jButtonVoltar, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 280, 320, 40));
 
         jLabelPainel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/Agenda-PainelFundo.png"))); // NOI18N
@@ -182,6 +187,12 @@ public class TelaAgendar extends javax.swing.JFrame {
     private void jComboBoxBarbeiroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxBarbeiroActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jComboBoxBarbeiroActionPerformed
+
+    private void jButtonVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonVoltarActionPerformed
+        
+        controller.botaoVoltar();
+        
+    }//GEN-LAST:event_jButtonVoltarActionPerformed
            
     /**
      * @param args the command line arguments

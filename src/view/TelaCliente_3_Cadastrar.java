@@ -5,17 +5,22 @@
  */
 package view;
 
+import controller.TelaCliente_3_CadastrarController;
+
 /**
  *
  * @author Rafael
  */
 public class TelaCliente_3_Cadastrar extends javax.swing.JFrame {
 
+    private final TelaCliente_3_CadastrarController controller;
+    
     /**
      * Creates new form TelaPrincipal
      */
     public TelaCliente_3_Cadastrar() {
         initComponents();
+        controller = new TelaCliente_3_CadastrarController(this);
         
         jRadioButtons();
                 
@@ -200,6 +205,11 @@ public class TelaCliente_3_Cadastrar extends javax.swing.JFrame {
 
         jButtonVoltar.setBackground(new java.awt.Color(255, 255, 204));
         jButtonVoltar.setText("Voltar");
+        jButtonVoltar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonVoltarActionPerformed(evt);
+            }
+        });
         getContentPane().add(jButtonVoltar, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 500, 330, 40));
 
         jButtonCadastrar.setBackground(new java.awt.Color(204, 255, 204));
@@ -240,6 +250,12 @@ public class TelaCliente_3_Cadastrar extends javax.swing.JFrame {
     private void jFormattedTextFieldContato2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFormattedTextFieldContato2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jFormattedTextFieldContato2ActionPerformed
+
+    private void jButtonVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonVoltarActionPerformed
+        
+        controller.botaoVoltar();
+        
+    }//GEN-LAST:event_jButtonVoltarActionPerformed
 
     /**
      * @param args the command line arguments

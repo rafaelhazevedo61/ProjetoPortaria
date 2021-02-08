@@ -5,17 +5,22 @@
  */
 package view;
 
+import controller.TelaUsuario_2_AlterarExcluirController;
+
 /**
  *
  * @author Rafael
  */
 public class TelaUsuario_2_AlterarExcluir extends javax.swing.JFrame {
 
+    private final TelaUsuario_2_AlterarExcluirController controller;
+    
     /**
      * Creates new form TelaPrincipal
      */
     public TelaUsuario_2_AlterarExcluir() {
         initComponents();
+        controller = new TelaUsuario_2_AlterarExcluirController(this);
         
     }
     
@@ -98,6 +103,11 @@ public class TelaUsuario_2_AlterarExcluir extends javax.swing.JFrame {
 
         jButtonVoltar.setBackground(new java.awt.Color(255, 204, 204));
         jButtonVoltar.setText("Voltar");
+        jButtonVoltar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonVoltarActionPerformed(evt);
+            }
+        });
         getContentPane().add(jButtonVoltar, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 570, 330, 40));
 
         jButtonSalvar.setBackground(new java.awt.Color(204, 255, 204));
@@ -121,6 +131,12 @@ public class TelaUsuario_2_AlterarExcluir extends javax.swing.JFrame {
     private void jComboBoxPermissaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxPermissaoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jComboBoxPermissaoActionPerformed
+
+    private void jButtonVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonVoltarActionPerformed
+        
+        controller.botaoVoltar();
+        
+    }//GEN-LAST:event_jButtonVoltarActionPerformed
 
     /**
      * @param args the command line arguments

@@ -9,6 +9,7 @@ import view.TelaAgendamentos;
 import view.TelaAgendar;
 import view.TelaBarbeiro_1_Opcoes;
 import view.TelaCliente_1_Opcoes;
+import view.TelaPrincipal;
 import view.TelaServico_1_Opcoes;
 import view.TelaUsuario_1_Opcoes;
 
@@ -74,6 +75,16 @@ public class TelaAgendamentosController {
         
     }
     //BARRA MENU - FIM
+
+    //BOTAO VOLTAR - INICIO
+    public void botaoVoltar() {
+        
+        TelaPrincipal telaPrincipal = new TelaPrincipal();
+        telaPrincipal.setVisible(true);
+        view.dispose();
+        
+    }
+    //BOTAO VOLTAR - FIM
     
     
     

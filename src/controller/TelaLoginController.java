@@ -13,8 +13,8 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import model.Usuarios;
-import view.TelaAgendar;
 import view.TelaLogin;
+import view.TelaPrincipal;
 
 /**
  *
@@ -54,8 +54,8 @@ public class TelaLoginController {
             JOptionPane.showMessageDialog(null,"Usuario autenticado com sucesso");
             System.setProperty("usuarioLogado", usuario);
             
-            TelaAgendar telaAgendar = new TelaAgendar();
-            telaAgendar.setVisible(true);
+            TelaPrincipal telaPrincipal = new TelaPrincipal();
+            telaPrincipal.setVisible(true);
             view.dispose();
             
         } else {

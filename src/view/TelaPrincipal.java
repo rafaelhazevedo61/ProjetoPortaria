@@ -34,29 +34,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanelTelaPrincipal = new javax.swing.JPanel();
-        jPanelTelaAgendar = new javax.swing.JPanel();
-        jScrollPaneAgendamentos = new javax.swing.JScrollPane();
-        jTableAgendamentos = new javax.swing.JTable();
-        jLabelCliente = new javax.swing.JLabel();
-        jComboBoxCliente = new javax.swing.JComboBox<>();
-        jLabelBarbeiro = new javax.swing.JLabel();
-        jComboBoxBarbeiro = new javax.swing.JComboBox<>();
-        jLabelServico = new javax.swing.JLabel();
-        jComboBoxServico = new javax.swing.JComboBox<>();
-        jLabelValor = new javax.swing.JLabel();
-        jTextFieldValor = new javax.swing.JTextField();
-        jLabelValorData = new javax.swing.JLabel();
-        jFormattedTextFieldData = new javax.swing.JFormattedTextField();
-        jLabelValorHora = new javax.swing.JLabel();
-        jFormattedTextFieldHora = new javax.swing.JFormattedTextField();
-        jLabelObservacao = new javax.swing.JLabel();
-        jScrollPaneObservacao = new javax.swing.JScrollPane();
-        jTextAreaObservacao = new javax.swing.JTextArea();
-        jButtonAgendar = new javax.swing.JButton();
-        jLabelPainel = new javax.swing.JLabel();
         jLabelImagemFundo = new javax.swing.JLabel();
-        jPanelTelaAgendamentos = new javax.swing.JPanel();
-        jLabelImagemFundo1 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenuCadastro = new javax.swing.JMenu();
         jMenuItemCliente = new javax.swing.JMenuItem();
@@ -71,118 +49,12 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanelTelaPrincipal.setLayout(new java.awt.CardLayout());
+        jPanelTelaPrincipal.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanelTelaAgendar.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jLabelImagemFundo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/fundo-MenuPrincipal.jpg"))); // NOI18N
+        jPanelTelaPrincipal.add(jLabelImagemFundo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1300, 630));
 
-        jTableAgendamentos.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "Cliente", "Barbeiro", "Servico", "Valor", "Data", "Hora", "Observacao"
-            }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false
-            };
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-        jScrollPaneAgendamentos.setViewportView(jTableAgendamentos);
-
-        jPanelTelaAgendar.add(jScrollPaneAgendamentos, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 337, 1150, 270));
-
-        jLabelCliente.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabelCliente.setForeground(new java.awt.Color(255, 255, 255));
-        jLabelCliente.setText("Cliente");
-        jPanelTelaAgendar.add(jLabelCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 40, -1, -1));
-
-        jComboBoxCliente.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "TEXTO" }));
-        jComboBoxCliente.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBoxClienteActionPerformed(evt);
-            }
-        });
-        jPanelTelaAgendar.add(jComboBoxCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 30, 400, 40));
-
-        jLabelBarbeiro.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabelBarbeiro.setForeground(new java.awt.Color(255, 255, 255));
-        jLabelBarbeiro.setText("Barbeiro");
-        jPanelTelaAgendar.add(jLabelBarbeiro, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 90, -1, -1));
-
-        jComboBoxBarbeiro.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "TEXTO" }));
-        jComboBoxBarbeiro.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBoxBarbeiroActionPerformed(evt);
-            }
-        });
-        jPanelTelaAgendar.add(jComboBoxBarbeiro, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 80, 400, 40));
-
-        jLabelServico.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabelServico.setForeground(new java.awt.Color(255, 255, 255));
-        jLabelServico.setText("Serviço");
-        jPanelTelaAgendar.add(jLabelServico, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 140, -1, -1));
-
-        jComboBoxServico.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "TEXTO" }));
-        jComboBoxServico.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBoxServicoActionPerformed(evt);
-            }
-        });
-        jPanelTelaAgendar.add(jComboBoxServico, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 130, 400, 40));
-
-        jLabelValor.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabelValor.setForeground(new java.awt.Color(255, 255, 255));
-        jLabelValor.setText("Valor");
-        jPanelTelaAgendar.add(jLabelValor, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 190, -1, -1));
-        jPanelTelaAgendar.add(jTextFieldValor, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 180, 400, 40));
-
-        jLabelValorData.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabelValorData.setForeground(new java.awt.Color(255, 255, 255));
-        jLabelValorData.setText("Data");
-        jPanelTelaAgendar.add(jLabelValorData, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 240, -1, -1));
-        jPanelTelaAgendar.add(jFormattedTextFieldData, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 230, 400, 40));
-
-        jLabelValorHora.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabelValorHora.setForeground(new java.awt.Color(255, 255, 255));
-        jLabelValorHora.setText("Hora");
-        jPanelTelaAgendar.add(jLabelValorHora, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 290, -1, -1));
-        jPanelTelaAgendar.add(jFormattedTextFieldHora, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 280, 400, 40));
-
-        jLabelObservacao.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabelObservacao.setForeground(new java.awt.Color(255, 255, 255));
-        jLabelObservacao.setText("Observação");
-        jPanelTelaAgendar.add(jLabelObservacao, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 30, -1, -1));
-
-        jTextAreaObservacao.setColumns(20);
-        jTextAreaObservacao.setRows(5);
-        jScrollPaneObservacao.setViewportView(jTextAreaObservacao);
-
-        jPanelTelaAgendar.add(jScrollPaneObservacao, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 70, 650, 200));
-
-        jButtonAgendar.setBackground(new java.awt.Color(204, 255, 204));
-        jButtonAgendar.setText("Agendar");
-        jPanelTelaAgendar.add(jButtonAgendar, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 280, 650, 40));
-
-        jLabelPainel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/Agenda-PainelFundo.png"))); // NOI18N
-        jPanelTelaAgendar.add(jLabelPainel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 1300, 610));
-
-        jLabelImagemFundo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/AgendaFundo.png"))); // NOI18N
-        jPanelTelaAgendar.add(jLabelImagemFundo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1300, 630));
-
-        jPanelTelaPrincipal.add(jPanelTelaAgendar, "TelaAgendar");
-
-        jPanelTelaAgendamentos.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabelImagemFundo1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/AgendaFundo.png"))); // NOI18N
-        jPanelTelaAgendamentos.add(jLabelImagemFundo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1300, 630));
-
-        jPanelTelaPrincipal.add(jPanelTelaAgendamentos, "TelaAgendamento");
-
-        jMenuCadastro.setText("Cadastro");
+        jMenuCadastro.setText("<html>\n<b>Cadastro</b>\n</html>");
 
         jMenuItemCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/icones/cliente-icon.png"))); // NOI18N
         jMenuItemCliente.setText("Cliente");
@@ -195,19 +67,34 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         jMenuItemBarbeiro.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/icones/cliente-icon.png"))); // NOI18N
         jMenuItemBarbeiro.setText("Barbeiro");
+        jMenuItemBarbeiro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemBarbeiroActionPerformed(evt);
+            }
+        });
         jMenuCadastro.add(jMenuItemBarbeiro);
 
         jMenuItemServico.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/icones/tesoura-icon.png"))); // NOI18N
         jMenuItemServico.setText("Serviço");
+        jMenuItemServico.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemServicoActionPerformed(evt);
+            }
+        });
         jMenuCadastro.add(jMenuItemServico);
 
         jMenuItemUsuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/icones/usuario-icon.png"))); // NOI18N
         jMenuItemUsuario.setText("Usuario");
+        jMenuItemUsuario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemUsuarioActionPerformed(evt);
+            }
+        });
         jMenuCadastro.add(jMenuItemUsuario);
 
         jMenuBar1.add(jMenuCadastro);
 
-        jMenuOperacao.setText("Operação");
+        jMenuOperacao.setText("<html>\n<b>Operação</b>\n</html>");
 
         jMenuItemAgendar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/icones/agenda-icon.png"))); // NOI18N
         jMenuItemAgendar.setText("Agendar");
@@ -229,10 +116,10 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenuOperacao);
 
-        jMenuRelatorio.setText("Relatório");
+        jMenuRelatorio.setText("<html>\n<b>Relatório</b>\n</html>");
         jMenuBar1.add(jMenuRelatorio);
 
-        jMenuSair.setText("Sair");
+        jMenuSair.setText("<html>\n<b>Sair</b>\n</html>");
         jMenuBar1.add(jMenuSair);
 
         setJMenuBar(jMenuBar1);
@@ -253,34 +140,40 @@ public class TelaPrincipal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jMenuItemAgendamentosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemAgendamentosActionPerformed
-                
-        CardLayout c1 = (CardLayout) jPanelTelaAgendamentos.getLayout();
-        c1.show(jPanelTelaAgendamentos, "TelaAgendamentos");  
+
+        controller.menuAgendamentos();
         
     }//GEN-LAST:event_jMenuItemAgendamentosActionPerformed
 
     private void jMenuItemClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemClienteActionPerformed
-        // TODO add your handling code here:
+        
+        controller.menuCliente();
+        
     }//GEN-LAST:event_jMenuItemClienteActionPerformed
 
     private void jMenuItemAgendarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemAgendarActionPerformed
-        
-        CardLayout c1 = (CardLayout) jPanelTelaAgendar.getLayout();
-        c1.show(jPanelTelaAgendar, "TelaAgendar");  
+
+        controller.menuAgendar();
         
     }//GEN-LAST:event_jMenuItemAgendarActionPerformed
 
-    private void jComboBoxServicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxServicoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBoxServicoActionPerformed
+    private void jMenuItemBarbeiroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemBarbeiroActionPerformed
+        
+        controller.menuBarbeiro();
+        
+    }//GEN-LAST:event_jMenuItemBarbeiroActionPerformed
 
-    private void jComboBoxBarbeiroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxBarbeiroActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBoxBarbeiroActionPerformed
+    private void jMenuItemUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemUsuarioActionPerformed
+        
+        controller.menuUsuario();
+        
+    }//GEN-LAST:event_jMenuItemUsuarioActionPerformed
 
-    private void jComboBoxClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxClienteActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBoxClienteActionPerformed
+    private void jMenuItemServicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemServicoActionPerformed
+        
+        controller.menuServico();
+        
+    }//GEN-LAST:event_jMenuItemServicoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -373,22 +266,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButtonAgendar;
-    private javax.swing.JComboBox<Object> jComboBoxBarbeiro;
-    private javax.swing.JComboBox<Object> jComboBoxCliente;
-    private javax.swing.JComboBox<Object> jComboBoxServico;
-    private javax.swing.JFormattedTextField jFormattedTextFieldData;
-    private javax.swing.JFormattedTextField jFormattedTextFieldHora;
-    private javax.swing.JLabel jLabelBarbeiro;
-    private javax.swing.JLabel jLabelCliente;
     private javax.swing.JLabel jLabelImagemFundo;
-    private javax.swing.JLabel jLabelImagemFundo1;
-    private javax.swing.JLabel jLabelObservacao;
-    private javax.swing.JLabel jLabelPainel;
-    private javax.swing.JLabel jLabelServico;
-    private javax.swing.JLabel jLabelValor;
-    private javax.swing.JLabel jLabelValorData;
-    private javax.swing.JLabel jLabelValorHora;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenu jMenuCadastro;
     private javax.swing.JMenuItem jMenuItemAgendamentos;
@@ -400,13 +278,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenu jMenuOperacao;
     private javax.swing.JMenu jMenuRelatorio;
     private javax.swing.JMenu jMenuSair;
-    private javax.swing.JPanel jPanelTelaAgendamentos;
-    private javax.swing.JPanel jPanelTelaAgendar;
     private javax.swing.JPanel jPanelTelaPrincipal;
-    private javax.swing.JScrollPane jScrollPaneAgendamentos;
-    private javax.swing.JScrollPane jScrollPaneObservacao;
-    private javax.swing.JTable jTableAgendamentos;
-    private javax.swing.JTextArea jTextAreaObservacao;
-    private javax.swing.JTextField jTextFieldValor;
     // End of variables declaration//GEN-END:variables
 }
