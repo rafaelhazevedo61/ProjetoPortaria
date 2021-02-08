@@ -52,7 +52,7 @@ public class TelaBarbeiro_3_CadastrarController {
         }
         
         Barbeiros novobarbeiro;
-        novobarbeiro = new Barbeiros(nome, cpf, email, sexo, data_nascimento, 0, cep, rua, numero, complemento, bairro, contato1, contato2, recebe_email);
+        novobarbeiro = new Barbeiros(nome, cpf, email, sexo, data_nascimento, sexo, cep, rua, numero, complemento, bairro, contato1, contato2, recebe_email);
         
         Connection conexao;
         conexao = ConnectionFactory.getConnection();

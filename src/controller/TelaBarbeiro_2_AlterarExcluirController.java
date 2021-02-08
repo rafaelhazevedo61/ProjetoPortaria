@@ -83,7 +83,7 @@ public class TelaBarbeiro_2_AlterarExcluirController {
         
     }
     
-    public void atualizaMorador() {
+    public void atualizaBarbeiro() {
 
         JTable tabelaBarbeiros = view.getjTableBarbeiros();
 
@@ -131,7 +131,7 @@ public class TelaBarbeiro_2_AlterarExcluirController {
         
     }
     
-    public void excluiMorador() {
+    public void excluiBarbeiro() {
 
         JTable tabelaBarbeiros = view.getjTableBarbeiros();
 
@@ -229,14 +229,14 @@ public class TelaBarbeiro_2_AlterarExcluirController {
     
     public void botaoSalvar() {
         
-        atualizaMorador();
+        atualizaBarbeiro();
         tabelaBarbeiros();
         
     }
     
     public void botaoExcluir() {
         
-        excluiMorador();
+        excluiBarbeiro();
         tabelaBarbeiros();
         
     }

@@ -92,7 +92,7 @@ public class BarbeirosDAO {
             stmt = con.prepareStatement(sql);
             stmt.setString(1, atualizabarbeiro.getNome().toUpperCase());
             stmt.setString(2, atualizabarbeiro.getCpf());
-            stmt.setString(3, atualizabarbeiro.getEmail().toUpperCase());
+            stmt.setString(3, atualizabarbeiro.getEmail());
             stmt.setDate(4, Data.ConvertDataFormParaBanco(atualizabarbeiro.getData_nascimento()));
             stmt.setInt(5, atualizabarbeiro.getSexo());
             stmt.setString(6, atualizabarbeiro.getCep());
@@ -134,7 +134,7 @@ public class BarbeirosDAO {
             
             stmt.executeUpdate();
 
-            JOptionPane.showMessageDialog(null, "Barbeiro xcluído com sucesso!");
+            JOptionPane.showMessageDialog(null, "Barbeiro excluído com sucesso!");
             
         } catch (SQLException ex) {
             
@@ -213,7 +213,7 @@ public class BarbeirosDAO {
             
             Logger.getLogger(BarbeirosDAO.class.getName()).log(Level.SEVERE, null, ex);
             
-            System.out.println("Erro no método ListarBarbeiros() na classe BarbeirosDAO");
+            System.out.println("Erro no método ListarBarbeirosPorNome() na classe BarbeirosDAO");
             
         } finally {
             

@@ -6,6 +6,12 @@
 package view;
 
 import controller.TelaCliente_2_AlterarExcluirController;
+import javax.swing.JComboBox;
+import javax.swing.JFormattedTextField;
+import javax.swing.JRadioButton;
+import javax.swing.JTable;
+import javax.swing.JTextField;
+import util.Mascaras;
 
 /**
  *
@@ -22,6 +28,17 @@ public class TelaCliente_2_AlterarExcluir extends javax.swing.JFrame {
         initComponents();
         controller = new TelaCliente_2_AlterarExcluirController(this);
         
+        //INICIALIZANDO MÁSCARAS DOS CAMPOS
+        Mascaras.formataCPF(jFormattedTextFieldCPF);
+        Mascaras.formataCEP(jFormattedTextFieldCEP);
+        Mascaras.formataData(jFormattedTextFieldDataNascimento);
+        Mascaras.formataTelefoneCelular(jFormattedTextFieldContatoCelular);
+        Mascaras.formataTelefone(jFormattedTextFieldContatoTelefone);
+        
+        //INICIALIZAÇÃO DA TABELA
+        controller.tabelaClientes();
+        
+        //INCIALIZAÇÃO DOS RÁDIO BUTTONS
         jRadioButtons();
                 
     }
@@ -65,11 +82,15 @@ public class TelaCliente_2_AlterarExcluir extends javax.swing.JFrame {
         jLabelComplemento = new javax.swing.JLabel();
         jTextFieldComplemento = new javax.swing.JTextField();
         jLabelBairro = new javax.swing.JLabel();
-        jTextFieldNumeroBairro = new javax.swing.JTextField();
-        jLabelContato1 = new javax.swing.JLabel();
-        jFormattedTextFieldContato1 = new javax.swing.JFormattedTextField();
+        jTextFieldBairro = new javax.swing.JTextField();
+        jLabelContatoCelular = new javax.swing.JLabel();
+        jFormattedTextFieldContatoCelular = new javax.swing.JFormattedTextField();
         jLabelContato2 = new javax.swing.JLabel();
-        jFormattedTextFieldContato2 = new javax.swing.JFormattedTextField();
+        jFormattedTextFieldContatoTelefone = new javax.swing.JFormattedTextField();
+        jComboBoxPesquisa = new javax.swing.JComboBox<>();
+        jLabelBairroPesquisa = new javax.swing.JLabel();
+        jTextFieldPesquisa = new javax.swing.JTextField();
+        jButtonPesquisar = new javax.swing.JButton();
         jScrollPaneClientes = new javax.swing.JScrollPane();
         jTableClientes = new javax.swing.JTable();
         jButtonSalvar = new javax.swing.JButton();
@@ -177,48 +198,82 @@ public class TelaCliente_2_AlterarExcluir extends javax.swing.JFrame {
         jLabelBairro.setForeground(new java.awt.Color(255, 255, 255));
         jLabelBairro.setText("Bairro");
         getContentPane().add(jLabelBairro, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 220, -1, -1));
-        getContentPane().add(jTextFieldNumeroBairro, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 210, 230, 40));
+        getContentPane().add(jTextFieldBairro, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 210, 230, 40));
 
-        jLabelContato1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabelContato1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabelContato1.setText("Contato 1");
-        getContentPane().add(jLabelContato1, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 220, -1, -1));
+        jLabelContatoCelular.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabelContatoCelular.setForeground(new java.awt.Color(255, 255, 255));
+        jLabelContatoCelular.setText("Contato 1 (Celular)");
+        getContentPane().add(jLabelContatoCelular, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 220, -1, -1));
 
-        jFormattedTextFieldContato1.setToolTipText("Formato: (xx)xxxxx-xxxx");
-        jFormattedTextFieldContato1.addActionListener(new java.awt.event.ActionListener() {
+        jFormattedTextFieldContatoCelular.setToolTipText("Formato: (xx)xxxxx-xxxx");
+        jFormattedTextFieldContatoCelular.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jFormattedTextFieldContato1ActionPerformed(evt);
+                jFormattedTextFieldContatoCelularActionPerformed(evt);
             }
         });
-        getContentPane().add(jFormattedTextFieldContato1, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 210, 130, 40));
+        getContentPane().add(jFormattedTextFieldContatoCelular, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 210, 130, 40));
 
         jLabelContato2.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabelContato2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabelContato2.setText("Contato 2");
+        jLabelContato2.setText("Contato 2 (Telefone)");
         getContentPane().add(jLabelContato2, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 220, -1, -1));
 
-        jFormattedTextFieldContato2.setToolTipText("Formato: (xx)xxxxx-xxxx");
-        jFormattedTextFieldContato2.addActionListener(new java.awt.event.ActionListener() {
+        jFormattedTextFieldContatoTelefone.setToolTipText("Formato: (xx)xxxxx-xxxx");
+        jFormattedTextFieldContatoTelefone.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jFormattedTextFieldContato2ActionPerformed(evt);
+                jFormattedTextFieldContatoTelefoneActionPerformed(evt);
             }
         });
-        getContentPane().add(jFormattedTextFieldContato2, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 210, 130, 40));
+        getContentPane().add(jFormattedTextFieldContatoTelefone, new org.netbeans.lib.awtextra.AbsoluteConstraints(940, 210, 130, 40));
+
+        jComboBoxPesquisa.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nome" }));
+        jComboBoxPesquisa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBoxPesquisaActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jComboBoxPesquisa, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 270, 120, 30));
+
+        jLabelBairroPesquisa.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabelBairroPesquisa.setForeground(new java.awt.Color(255, 255, 255));
+        jLabelBairroPesquisa.setText("Pesquisar por");
+        getContentPane().add(jLabelBairroPesquisa, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 270, -1, -1));
+
+        jTextFieldPesquisa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextFieldPesquisaActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jTextFieldPesquisa, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 270, 570, 30));
+
+        jButtonPesquisar.setBackground(new java.awt.Color(204, 255, 204));
+        jButtonPesquisar.setText("Pesquisar");
+        jButtonPesquisar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonPesquisarActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButtonPesquisar, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 270, 330, 30));
 
         jTableClientes.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "Nome", "CPF", "Email", "Data Nascimento", "Sexo", "Recebe Emails"
+                "Codcliente", "Nome", "Cpf", "Email", "Data_nascimento", "Sexo", "Cep", "Rua", "Numero", "Complemento", "Bairro", "Contato1", "Contato2", "Recebe_email"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, true, false, false, false
+                false, false, false, false, false, false, false, false, false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
+            }
+        });
+        jTableClientes.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTableClientesMouseClicked(evt);
             }
         });
         jScrollPaneClientes.setViewportView(jTableClientes);
@@ -229,16 +284,34 @@ public class TelaCliente_2_AlterarExcluir extends javax.swing.JFrame {
             jTableClientes.getColumnModel().getColumn(3).setResizable(false);
             jTableClientes.getColumnModel().getColumn(4).setResizable(false);
             jTableClientes.getColumnModel().getColumn(5).setResizable(false);
+            jTableClientes.getColumnModel().getColumn(6).setResizable(false);
+            jTableClientes.getColumnModel().getColumn(7).setResizable(false);
+            jTableClientes.getColumnModel().getColumn(8).setResizable(false);
+            jTableClientes.getColumnModel().getColumn(9).setResizable(false);
+            jTableClientes.getColumnModel().getColumn(10).setResizable(false);
+            jTableClientes.getColumnModel().getColumn(11).setResizable(false);
+            jTableClientes.getColumnModel().getColumn(12).setResizable(false);
+            jTableClientes.getColumnModel().getColumn(13).setResizable(false);
         }
 
-        getContentPane().add(jScrollPaneClientes, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 260, 1170, 300));
+        getContentPane().add(jScrollPaneClientes, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 310, 1170, 250));
 
         jButtonSalvar.setBackground(new java.awt.Color(204, 255, 204));
         jButtonSalvar.setText("Salvar");
+        jButtonSalvar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonSalvarActionPerformed(evt);
+            }
+        });
         getContentPane().add(jButtonSalvar, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 570, 330, 40));
 
         jButtonExcluir.setBackground(new java.awt.Color(255, 204, 204));
         jButtonExcluir.setText("Excluir");
+        jButtonExcluir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonExcluirActionPerformed(evt);
+            }
+        });
         getContentPane().add(jButtonExcluir, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 570, 330, 40));
 
         jButtonVoltar.setBackground(new java.awt.Color(255, 255, 204));
@@ -273,19 +346,51 @@ public class TelaCliente_2_AlterarExcluir extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jFormattedTextFieldCEPActionPerformed
 
-    private void jFormattedTextFieldContato1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFormattedTextFieldContato1ActionPerformed
+    private void jFormattedTextFieldContatoCelularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFormattedTextFieldContatoCelularActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jFormattedTextFieldContato1ActionPerformed
+    }//GEN-LAST:event_jFormattedTextFieldContatoCelularActionPerformed
 
-    private void jFormattedTextFieldContato2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFormattedTextFieldContato2ActionPerformed
+    private void jFormattedTextFieldContatoTelefoneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFormattedTextFieldContatoTelefoneActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jFormattedTextFieldContato2ActionPerformed
+    }//GEN-LAST:event_jFormattedTextFieldContatoTelefoneActionPerformed
 
     private void jButtonVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonVoltarActionPerformed
         
         controller.botaoVoltar();
         
     }//GEN-LAST:event_jButtonVoltarActionPerformed
+
+    private void jTableClientesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableClientesMouseClicked
+        
+        controller.mouseClicked();
+        
+    }//GEN-LAST:event_jTableClientesMouseClicked
+
+    private void jComboBoxPesquisaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxPesquisaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBoxPesquisaActionPerformed
+
+    private void jTextFieldPesquisaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldPesquisaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldPesquisaActionPerformed
+
+    private void jButtonPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPesquisarActionPerformed
+
+        controller.botaoPesquisar();
+
+    }//GEN-LAST:event_jButtonPesquisarActionPerformed
+
+    private void jButtonSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSalvarActionPerformed
+        
+        controller.botaoSalvar();
+        
+    }//GEN-LAST:event_jButtonSalvarActionPerformed
+
+    private void jButtonExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonExcluirActionPerformed
+        
+        controller.botaoExcluir();
+        
+    }//GEN-LAST:event_jButtonExcluirActionPerformed
 
     /**
      * @param args the command line arguments
@@ -313,38 +418,6 @@ public class TelaCliente_2_AlterarExcluir extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(TelaCliente_2_AlterarExcluir.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
@@ -353,23 +426,162 @@ public class TelaCliente_2_AlterarExcluir extends javax.swing.JFrame {
         });
     }
 
+    public JComboBox<String> getjComboBoxSexo() {
+        return jComboBoxSexo;
+    }
+
+    public void setjComboBoxSexo(JComboBox<String> jComboBoxSexo) {
+        this.jComboBoxSexo = jComboBoxSexo;
+    }
+
+    public JFormattedTextField getjFormattedTextFieldCEP() {
+        return jFormattedTextFieldCEP;
+    }
+
+    public void setjFormattedTextFieldCEP(JFormattedTextField jFormattedTextFieldCEP) {
+        this.jFormattedTextFieldCEP = jFormattedTextFieldCEP;
+    }
+
+    public JFormattedTextField getjFormattedTextFieldCPF() {
+        return jFormattedTextFieldCPF;
+    }
+
+    public void setjFormattedTextFieldCPF(JFormattedTextField jFormattedTextFieldCPF) {
+        this.jFormattedTextFieldCPF = jFormattedTextFieldCPF;
+    }
+
+    public JFormattedTextField getjFormattedTextFieldContatoCelular() {
+        return jFormattedTextFieldContatoCelular;
+    }
+
+    public void setjFormattedTextFieldContatoCelular(JFormattedTextField jFormattedTextFieldContatoCelular) {
+        this.jFormattedTextFieldContatoCelular = jFormattedTextFieldContatoCelular;
+    }
+
+    public JFormattedTextField getjFormattedTextFieldContatoTelefone() {
+        return jFormattedTextFieldContatoTelefone;
+    }
+
+    public void setjFormattedTextFieldContatoTelefone(JFormattedTextField jFormattedTextFieldContatoTelefone) {
+        this.jFormattedTextFieldContatoTelefone = jFormattedTextFieldContatoTelefone;
+    }
+
+    public JFormattedTextField getjFormattedTextFieldDataNascimento() {
+        return jFormattedTextFieldDataNascimento;
+    }
+
+    public void setjFormattedTextFieldDataNascimento(JFormattedTextField jFormattedTextFieldDataNascimento) {
+        this.jFormattedTextFieldDataNascimento = jFormattedTextFieldDataNascimento;
+    }
+
+    public JRadioButton getjRadioButtonNão() {
+        return jRadioButtonNão;
+    }
+
+    public void setjRadioButtonNão(JRadioButton jRadioButtonNão) {
+        this.jRadioButtonNão = jRadioButtonNão;
+    }
+
+    public JRadioButton getjRadioButtonSim() {
+        return jRadioButtonSim;
+    }
+
+    public void setjRadioButtonSim(JRadioButton jRadioButtonSim) {
+        this.jRadioButtonSim = jRadioButtonSim;
+    }
+
+    public JTable getjTableClientes() {
+        return jTableClientes;
+    }
+
+    public void setjTableClientes(JTable jTableClientes) {
+        this.jTableClientes = jTableClientes;
+    }
+
+    public JTextField getjTextFieldBairro() {
+        return jTextFieldBairro;
+    }
+
+    public void setjTextFieldBairro(JTextField jTextFieldBairro) {
+        this.jTextFieldBairro = jTextFieldBairro;
+    }
+
+    public JTextField getjTextFieldComplemento() {
+        return jTextFieldComplemento;
+    }
+
+    public void setjTextFieldComplemento(JTextField jTextFieldComplemento) {
+        this.jTextFieldComplemento = jTextFieldComplemento;
+    }
+
+    public JTextField getjTextFieldEmail() {
+        return jTextFieldEmail;
+    }
+
+    public void setjTextFieldEmail(JTextField jTextFieldEmail) {
+        this.jTextFieldEmail = jTextFieldEmail;
+    }
+
+    public JTextField getjTextFieldNomeCompleto() {
+        return jTextFieldNomeCompleto;
+    }
+
+    public void setjTextFieldNomeCompleto(JTextField jTextFieldNomeCompleto) {
+        this.jTextFieldNomeCompleto = jTextFieldNomeCompleto;
+    }
+
+    public JTextField getjTextFieldNumero() {
+        return jTextFieldNumero;
+    }
+
+    public void setjTextFieldNumero(JTextField jTextFieldNumero) {
+        this.jTextFieldNumero = jTextFieldNumero;
+    }
+
+    public JTextField getjTextFieldRua() {
+        return jTextFieldRua;
+    }
+
+    public void setjTextFieldRua(JTextField jTextFieldRua) {
+        this.jTextFieldRua = jTextFieldRua;
+    }
+
+    public JComboBox<Object> getjComboBoxPesquisa() {
+        return jComboBoxPesquisa;
+    }
+
+    public void setjComboBoxPesquisa(JComboBox<Object> jComboBoxPesquisa) {
+        this.jComboBoxPesquisa = jComboBoxPesquisa;
+    }
+
+    public JTextField getjTextFieldPesquisa() {
+        return jTextFieldPesquisa;
+    }
+
+    public void setjTextFieldPesquisa(JTextField jTextFieldPesquisa) {
+        this.jTextFieldPesquisa = jTextFieldPesquisa;
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup buttonGroup;
     private javax.swing.JButton jButtonExcluir;
+    private javax.swing.JButton jButtonPesquisar;
     private javax.swing.JButton jButtonSalvar;
     private javax.swing.JButton jButtonVoltar;
+    private javax.swing.JComboBox<Object> jComboBoxPesquisa;
     private javax.swing.JComboBox<String> jComboBoxSexo;
     private javax.swing.JFormattedTextField jFormattedTextFieldCEP;
     private javax.swing.JFormattedTextField jFormattedTextFieldCPF;
-    private javax.swing.JFormattedTextField jFormattedTextFieldContato1;
-    private javax.swing.JFormattedTextField jFormattedTextFieldContato2;
+    private javax.swing.JFormattedTextField jFormattedTextFieldContatoCelular;
+    private javax.swing.JFormattedTextField jFormattedTextFieldContatoTelefone;
     private javax.swing.JFormattedTextField jFormattedTextFieldDataNascimento;
     private javax.swing.JLabel jLabelBairro;
+    private javax.swing.JLabel jLabelBairroPesquisa;
     private javax.swing.JLabel jLabelCEP;
     private javax.swing.JLabel jLabelCPF;
     private javax.swing.JLabel jLabelComplemento;
-    private javax.swing.JLabel jLabelContato1;
     private javax.swing.JLabel jLabelContato2;
+    private javax.swing.JLabel jLabelContatoCelular;
     private javax.swing.JLabel jLabelDataNascimento;
     private javax.swing.JLabel jLabelEmail;
     private javax.swing.JLabel jLabelImagemFundo;
@@ -383,11 +595,12 @@ public class TelaCliente_2_AlterarExcluir extends javax.swing.JFrame {
     private javax.swing.JRadioButton jRadioButtonSim;
     private javax.swing.JScrollPane jScrollPaneClientes;
     private javax.swing.JTable jTableClientes;
+    private javax.swing.JTextField jTextFieldBairro;
     private javax.swing.JTextField jTextFieldComplemento;
     private javax.swing.JTextField jTextFieldEmail;
     private javax.swing.JTextField jTextFieldNomeCompleto;
     private javax.swing.JTextField jTextFieldNumero;
-    private javax.swing.JTextField jTextFieldNumeroBairro;
+    private javax.swing.JTextField jTextFieldPesquisa;
     private javax.swing.JTextField jTextFieldRua;
     // End of variables declaration//GEN-END:variables
 }
