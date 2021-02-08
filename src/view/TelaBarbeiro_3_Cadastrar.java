@@ -6,6 +6,11 @@
 package view;
 
 import controller.TelaBarbeiro_3_CadastrarController;
+import javax.swing.JComboBox;
+import javax.swing.JFormattedTextField;
+import javax.swing.JRadioButton;
+import javax.swing.JTextField;
+import util.Mascaras;
 
 /**
  *
@@ -22,6 +27,14 @@ public final class TelaBarbeiro_3_Cadastrar extends javax.swing.JFrame {
         initComponents();
         controller = new TelaBarbeiro_3_CadastrarController(this);
         
+        //INICIALIZANDO MÁSCARAS DOS CAMPOS
+        Mascaras.formataCPF(jFormattedTextFieldCPF);
+        Mascaras.formataCEP(jFormattedTextFieldCEP);
+        Mascaras.formataData(jFormattedTextFieldDataNascimento);
+        Mascaras.formataTelefoneCelular(jFormattedTextFieldContatoCelular);
+        Mascaras.formataTelefone(jFormattedTextFieldContatoTelefone);
+        
+        //INICIALIZANDO MÉTODO DOS RADIO BUTTONS
         jRadioButtons();
                 
     }
@@ -65,11 +78,11 @@ public final class TelaBarbeiro_3_Cadastrar extends javax.swing.JFrame {
         jLabelComplemento = new javax.swing.JLabel();
         jTextFieldComplemento = new javax.swing.JTextField();
         jLabelBairro = new javax.swing.JLabel();
-        jTextFieldNumeroBairro = new javax.swing.JTextField();
+        jTextFieldBairro = new javax.swing.JTextField();
         jLabelContato1 = new javax.swing.JLabel();
-        jFormattedTextFieldContato1 = new javax.swing.JFormattedTextField();
+        jFormattedTextFieldContatoCelular = new javax.swing.JFormattedTextField();
         jLabelContato2 = new javax.swing.JLabel();
-        jFormattedTextFieldContato2 = new javax.swing.JFormattedTextField();
+        jFormattedTextFieldContatoTelefone = new javax.swing.JFormattedTextField();
         jButtonCadastrar = new javax.swing.JButton();
         jButtonLimpar = new javax.swing.JButton();
         jButtonVoltar = new javax.swing.JButton();
@@ -175,36 +188,41 @@ public final class TelaBarbeiro_3_Cadastrar extends javax.swing.JFrame {
         jLabelBairro.setForeground(new java.awt.Color(255, 255, 255));
         jLabelBairro.setText("Bairro");
         getContentPane().add(jLabelBairro, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 310, -1, -1));
-        getContentPane().add(jTextFieldNumeroBairro, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 300, 230, 40));
+        getContentPane().add(jTextFieldBairro, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 300, 230, 40));
 
         jLabelContato1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabelContato1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabelContato1.setText("Contato 1");
-        getContentPane().add(jLabelContato1, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 310, -1, -1));
+        jLabelContato1.setText("Contato 1 (Celular)");
+        getContentPane().add(jLabelContato1, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 310, -1, -1));
 
-        jFormattedTextFieldContato1.setToolTipText("Formato: (xx)xxxxx-xxxx");
-        jFormattedTextFieldContato1.addActionListener(new java.awt.event.ActionListener() {
+        jFormattedTextFieldContatoCelular.setToolTipText("Formato: (xx)xxxxx-xxxx");
+        jFormattedTextFieldContatoCelular.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jFormattedTextFieldContato1ActionPerformed(evt);
+                jFormattedTextFieldContatoCelularActionPerformed(evt);
             }
         });
-        getContentPane().add(jFormattedTextFieldContato1, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 300, 130, 40));
+        getContentPane().add(jFormattedTextFieldContatoCelular, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 300, 130, 40));
 
         jLabelContato2.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabelContato2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabelContato2.setText("Contato 2");
+        jLabelContato2.setText("Contato 2 (Telefone)");
         getContentPane().add(jLabelContato2, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 310, -1, -1));
 
-        jFormattedTextFieldContato2.setToolTipText("Formato: (xx)xxxxx-xxxx");
-        jFormattedTextFieldContato2.addActionListener(new java.awt.event.ActionListener() {
+        jFormattedTextFieldContatoTelefone.setToolTipText("Formato: (xx)xxxxx-xxxx");
+        jFormattedTextFieldContatoTelefone.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jFormattedTextFieldContato2ActionPerformed(evt);
+                jFormattedTextFieldContatoTelefoneActionPerformed(evt);
             }
         });
-        getContentPane().add(jFormattedTextFieldContato2, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 300, 130, 40));
+        getContentPane().add(jFormattedTextFieldContatoTelefone, new org.netbeans.lib.awtextra.AbsoluteConstraints(940, 300, 130, 40));
 
         jButtonCadastrar.setBackground(new java.awt.Color(204, 255, 204));
         jButtonCadastrar.setText("Cadastrar");
+        jButtonCadastrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonCadastrarActionPerformed(evt);
+            }
+        });
         getContentPane().add(jButtonCadastrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 400, 330, 40));
 
         jButtonLimpar.setBackground(new java.awt.Color(255, 255, 204));
@@ -243,19 +261,25 @@ public final class TelaBarbeiro_3_Cadastrar extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jFormattedTextFieldCEPActionPerformed
 
-    private void jFormattedTextFieldContato1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFormattedTextFieldContato1ActionPerformed
+    private void jFormattedTextFieldContatoCelularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFormattedTextFieldContatoCelularActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jFormattedTextFieldContato1ActionPerformed
+    }//GEN-LAST:event_jFormattedTextFieldContatoCelularActionPerformed
 
-    private void jFormattedTextFieldContato2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFormattedTextFieldContato2ActionPerformed
+    private void jFormattedTextFieldContatoTelefoneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFormattedTextFieldContatoTelefoneActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jFormattedTextFieldContato2ActionPerformed
+    }//GEN-LAST:event_jFormattedTextFieldContatoTelefoneActionPerformed
 
     private void jButtonVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonVoltarActionPerformed
         
         controller.botaoVoltar();
         
     }//GEN-LAST:event_jButtonVoltarActionPerformed
+
+    private void jButtonCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCadastrarActionPerformed
+        
+        controller.botaoCadastrar();
+        
+    }//GEN-LAST:event_jButtonCadastrarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -419,6 +443,122 @@ public final class TelaBarbeiro_3_Cadastrar extends javax.swing.JFrame {
         });
     }
 
+    public JComboBox<String> getjComboBoxSexo() {
+        return jComboBoxSexo;
+    }
+
+    public void setjComboBoxSexo(JComboBox<String> jComboBoxSexo) {
+        this.jComboBoxSexo = jComboBoxSexo;
+    }
+
+    public JFormattedTextField getjFormattedTextFieldCEP() {
+        return jFormattedTextFieldCEP;
+    }
+
+    public void setjFormattedTextFieldCEP(JFormattedTextField jFormattedTextFieldCEP) {
+        this.jFormattedTextFieldCEP = jFormattedTextFieldCEP;
+    }
+
+    public JFormattedTextField getjFormattedTextFieldCPF() {
+        return jFormattedTextFieldCPF;
+    }
+
+    public void setjFormattedTextFieldCPF(JFormattedTextField jFormattedTextFieldCPF) {
+        this.jFormattedTextFieldCPF = jFormattedTextFieldCPF;
+    }
+
+    public JFormattedTextField getjFormattedTextFieldContatoCelular() {
+        return jFormattedTextFieldContatoCelular;
+    }
+
+    public void setjFormattedTextFieldContatoCelular(JFormattedTextField jFormattedTextFieldContatoCelular) {
+        this.jFormattedTextFieldContatoCelular = jFormattedTextFieldContatoCelular;
+    }
+
+    public JFormattedTextField getjFormattedTextFieldContatoTelefone() {
+        return jFormattedTextFieldContatoTelefone;
+    }
+
+    public void setjFormattedTextFieldContatoTelefone(JFormattedTextField jFormattedTextFieldContatoTelefone) {
+        this.jFormattedTextFieldContatoTelefone = jFormattedTextFieldContatoTelefone;
+    }
+
+    public JFormattedTextField getjFormattedTextFieldDataNascimento() {
+        return jFormattedTextFieldDataNascimento;
+    }
+
+    public void setjFormattedTextFieldDataNascimento(JFormattedTextField jFormattedTextFieldDataNascimento) {
+        this.jFormattedTextFieldDataNascimento = jFormattedTextFieldDataNascimento;
+    }
+
+    public JRadioButton getjRadioButtonNão() {
+        return jRadioButtonNão;
+    }
+
+    public void setjRadioButtonNão(JRadioButton jRadioButtonNão) {
+        this.jRadioButtonNão = jRadioButtonNão;
+    }
+
+    public JRadioButton getjRadioButtonSim() {
+        return jRadioButtonSim;
+    }
+
+    public void setjRadioButtonSim(JRadioButton jRadioButtonSim) {
+        this.jRadioButtonSim = jRadioButtonSim;
+    }
+
+    public JTextField getjTextFieldComplemento() {
+        return jTextFieldComplemento;
+    }
+
+    public void setjTextFieldComplemento(JTextField jTextFieldComplemento) {
+        this.jTextFieldComplemento = jTextFieldComplemento;
+    }
+
+    public JTextField getjTextFieldEmail() {
+        return jTextFieldEmail;
+    }
+
+    public void setjTextFieldEmail(JTextField jTextFieldEmail) {
+        this.jTextFieldEmail = jTextFieldEmail;
+    }
+
+    public JTextField getjTextFieldNomeCompleto() {
+        return jTextFieldNomeCompleto;
+    }
+
+    public void setjTextFieldNomeCompleto(JTextField jTextFieldNomeCompleto) {
+        this.jTextFieldNomeCompleto = jTextFieldNomeCompleto;
+    }
+
+    public JTextField getjTextFieldNumero() {
+        return jTextFieldNumero;
+    }
+
+    public void setjTextFieldNumero(JTextField jTextFieldNumero) {
+        this.jTextFieldNumero = jTextFieldNumero;
+    }
+
+    public JTextField getjTextFieldBairro() {
+        return jTextFieldBairro;
+    }
+
+    public void setjTextFieldBairro(JTextField jTextFieldBairro) {
+        this.jTextFieldBairro = jTextFieldBairro;
+    }
+
+    
+
+    public JTextField getjTextFieldRua() {
+        return jTextFieldRua;
+    }
+
+    public void setjTextFieldRua(JTextField jTextFieldRua) {
+        this.jTextFieldRua = jTextFieldRua;
+    }
+    
+    
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup buttonGroup;
     private javax.swing.JButton jButtonCadastrar;
@@ -427,8 +567,8 @@ public final class TelaBarbeiro_3_Cadastrar extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> jComboBoxSexo;
     private javax.swing.JFormattedTextField jFormattedTextFieldCEP;
     private javax.swing.JFormattedTextField jFormattedTextFieldCPF;
-    private javax.swing.JFormattedTextField jFormattedTextFieldContato1;
-    private javax.swing.JFormattedTextField jFormattedTextFieldContato2;
+    private javax.swing.JFormattedTextField jFormattedTextFieldContatoCelular;
+    private javax.swing.JFormattedTextField jFormattedTextFieldContatoTelefone;
     private javax.swing.JFormattedTextField jFormattedTextFieldDataNascimento;
     private javax.swing.JLabel jLabelBairro;
     private javax.swing.JLabel jLabelCEP;
@@ -447,11 +587,11 @@ public final class TelaBarbeiro_3_Cadastrar extends javax.swing.JFrame {
     private javax.swing.JLabel jLabelSexo;
     private javax.swing.JRadioButton jRadioButtonNão;
     private javax.swing.JRadioButton jRadioButtonSim;
+    private javax.swing.JTextField jTextFieldBairro;
     private javax.swing.JTextField jTextFieldComplemento;
     private javax.swing.JTextField jTextFieldEmail;
     private javax.swing.JTextField jTextFieldNomeCompleto;
     private javax.swing.JTextField jTextFieldNumero;
-    private javax.swing.JTextField jTextFieldNumeroBairro;
     private javax.swing.JTextField jTextFieldRua;
     // End of variables declaration//GEN-END:variables
 }
