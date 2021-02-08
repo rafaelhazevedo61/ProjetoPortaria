@@ -114,9 +114,10 @@ public class TelaBarbeiro_1_Opcoes extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jMenuItemAgendamentosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemAgendamentosActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItemAgendamentosActionPerformed
 
+    }//GEN-LAST:event_jMenuItemAgendamentosActionPerformed
+                                                  
+   
     /**
      * @param args the command line arguments
      */

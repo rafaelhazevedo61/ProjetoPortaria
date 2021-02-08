@@ -241,13 +241,40 @@ public class TelaAgendar extends javax.swing.JFrame {
     }//GEN-LAST:event_jComboBoxBarbeiroActionPerformed
 
     private void jMenuItemAgendamentosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemAgendamentosActionPerformed
-        // TODO add your handling code here:
+                
+        controller.menuAgendamentos();
+        
     }//GEN-LAST:event_jMenuItemAgendamentosActionPerformed
 
     private void jMenuItemClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemClienteActionPerformed
-        // TODO add your handling code here:
+                
+        controller.menuCliente();
+        
     }//GEN-LAST:event_jMenuItemClienteActionPerformed
+   
+    private void jMenuItemBarbeiroActionPerformed(java.awt.event.ActionEvent evt) {                                                  
+        
+        controller.menuBarbeiro();
+        
+    }                                                 
 
+    private void jMenuItemServicoActionPerformed(java.awt.event.ActionEvent evt) {                                                 
+        
+        controller.menuServico();
+        
+    }                                                
+
+    private void jMenuItemUsuarioActionPerformed(java.awt.event.ActionEvent evt) {                                                 
+        
+        controller.menuUsuario();
+        
+    }                                                
+
+    private void jMenuItemAgendarActionPerformed(java.awt.event.ActionEvent evt) {                                                 
+        
+        controller.menuAgendar();
+        
+    }           
     /**
      * @param args the command line arguments
      */

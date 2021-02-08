@@ -193,14 +193,29 @@ public class TelaAgendamentos extends javax.swing.JFrame {
 
         jMenuItemBarbeiro.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/icones/cliente-icon.png"))); // NOI18N
         jMenuItemBarbeiro.setText("Barbeiro");
+        jMenuItemBarbeiro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemBarbeiroActionPerformed(evt);
+            }
+        });
         jMenuCadastro.add(jMenuItemBarbeiro);
 
         jMenuItemServico.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/icones/tesoura-icon.png"))); // NOI18N
         jMenuItemServico.setText("Serviço");
+        jMenuItemServico.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemServicoActionPerformed(evt);
+            }
+        });
         jMenuCadastro.add(jMenuItemServico);
 
         jMenuItemUsuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/icones/usuario-icon.png"))); // NOI18N
         jMenuItemUsuario.setText("Usuario");
+        jMenuItemUsuario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemUsuarioActionPerformed(evt);
+            }
+        });
         jMenuCadastro.add(jMenuItemUsuario);
 
         jMenuBar1.add(jMenuCadastro);
@@ -209,6 +224,11 @@ public class TelaAgendamentos extends javax.swing.JFrame {
 
         jMenuItemAgendar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/icones/agenda-icon.png"))); // NOI18N
         jMenuItemAgendar.setText("Agendar");
+        jMenuItemAgendar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemAgendarActionPerformed(evt);
+            }
+        });
         jMenuOperacao.add(jMenuItemAgendar);
 
         jMenuItemAgendamentos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/icones/agenda-icon.png"))); // NOI18N
@@ -247,12 +267,40 @@ public class TelaAgendamentos extends javax.swing.JFrame {
     }//GEN-LAST:event_jComboBoxBarbeiroActionPerformed
 
     private void jMenuItemAgendamentosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemAgendamentosActionPerformed
-        // TODO add your handling code here:
+        
+        controller.menuAgendamentos();
+        
     }//GEN-LAST:event_jMenuItemAgendamentosActionPerformed
 
     private void jMenuItemClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemClienteActionPerformed
-        // TODO add your handling code here:
+        
+        controller.menuCliente();
+        
     }//GEN-LAST:event_jMenuItemClienteActionPerformed
+
+    private void jMenuItemBarbeiroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemBarbeiroActionPerformed
+        
+        controller.menuBarbeiro();
+        
+    }//GEN-LAST:event_jMenuItemBarbeiroActionPerformed
+
+    private void jMenuItemServicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemServicoActionPerformed
+        
+        controller.menuServico();
+        
+    }//GEN-LAST:event_jMenuItemServicoActionPerformed
+
+    private void jMenuItemUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemUsuarioActionPerformed
+        
+        controller.menuUsuario();
+        
+    }//GEN-LAST:event_jMenuItemUsuarioActionPerformed
+
+    private void jMenuItemAgendarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemAgendarActionPerformed
+        
+        controller.menuAgendar();
+        
+    }//GEN-LAST:event_jMenuItemAgendarActionPerformed
 
     /**
      * @param args the command line arguments
