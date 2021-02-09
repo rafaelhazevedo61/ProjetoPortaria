@@ -5,6 +5,10 @@
  */
 package controller;
 
+import conexao.ConnectionFactory;
+import dao.UsuariosDAO;
+import java.sql.Connection;
+import model.Usuarios;
 import view.TelaUsuario_1_Opcoes;
 import view.TelaUsuario_3_Cadastrar;
 
@@ -19,6 +23,33 @@ public class TelaUsuario_3_CadastrarController {
     //CONSTRUTOR
     public TelaUsuario_3_CadastrarController(TelaUsuario_3_Cadastrar view) {
         this.view = view;
+    }
+    
+    public void cadastrarNovoServico() {
+        
+        String usuario = view.getjTextFieldUsuario().getText();
+        String senha = view.getjPasswordFieldSenha().getText();
+        int permissao = view.getjComboBoxPermissao().getSelectedIndex();
+        
+        Usuarios novousuario;
+        novousuario = new Usuarios (usuario, senha, permissao);
+        
+        Connection conexao;
+        conexao = ConnectionFactory.getConnection();
+        
+        UsuariosDAO dao = new UsuariosDAO(conexao);
+        dao.CadastrarUsuario(novousuario);
+        
+    }
+    
+    public void botaoCadastrar(){
+        
+        cadastrarNovoServico();
+        
+    }
+    
+    public void botaoLimpar(){
+        
     }
  
     public void botaoVoltar() {

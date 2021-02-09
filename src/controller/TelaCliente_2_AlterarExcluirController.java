@@ -6,7 +6,6 @@
 package controller;
 
 import conexao.ConnectionFactory;
-import dao.BarbeirosDAO;
 import dao.ClientesDAO;
 import java.sql.Connection;
 import javax.swing.JComboBox;
@@ -16,7 +15,6 @@ import javax.swing.JRadioButton;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
-import model.Barbeiros;
 import model.Clientes;
 import util.Data;
 import view.TelaCliente_1_Opcoes;

@@ -6,6 +6,10 @@
 package view;
 
 import controller.TelaUsuario_2_AlterarExcluirController;
+import javax.swing.JComboBox;
+import javax.swing.JPasswordField;
+import javax.swing.JTable;
+import javax.swing.JTextField;
 
 /**
  *
@@ -21,6 +25,9 @@ public class TelaUsuario_2_AlterarExcluir extends javax.swing.JFrame {
     public TelaUsuario_2_AlterarExcluir() {
         initComponents();
         controller = new TelaUsuario_2_AlterarExcluirController(this);
+        
+        //INICIALIZAR TABELA
+        controller.tabelaUsuarios();
         
     }
     
@@ -41,6 +48,10 @@ public class TelaUsuario_2_AlterarExcluir extends javax.swing.JFrame {
         jPasswordFieldSenha = new javax.swing.JPasswordField();
         jLabelPermissao = new javax.swing.JLabel();
         jComboBoxPermissao = new javax.swing.JComboBox<>();
+        jLabelBairroPesquisa = new javax.swing.JLabel();
+        jComboBoxPesquisa = new javax.swing.JComboBox<>();
+        jTextFieldPesquisa = new javax.swing.JTextField();
+        jButtonPesquisar = new javax.swing.JButton();
         jScrollPaneUsuarios = new javax.swing.JScrollPane();
         jTableUsuarios = new javax.swing.JTable();
         jButtonVoltar = new javax.swing.JButton();
@@ -69,7 +80,7 @@ public class TelaUsuario_2_AlterarExcluir extends javax.swing.JFrame {
         jLabelPermissao.setText("Permissão");
         getContentPane().add(jLabelPermissao, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 170, -1, -1));
 
-        jComboBoxPermissao.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "TEXTO" }));
+        jComboBoxPermissao.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "TEXTO", "TEXTO2" }));
         jComboBoxPermissao.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboBoxPermissaoActionPerformed(evt);
@@ -77,26 +88,62 @@ public class TelaUsuario_2_AlterarExcluir extends javax.swing.JFrame {
         });
         getContentPane().add(jComboBoxPermissao, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 160, 210, 40));
 
+        jLabelBairroPesquisa.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabelBairroPesquisa.setForeground(new java.awt.Color(255, 255, 255));
+        jLabelBairroPesquisa.setText("Pesquisar por");
+        getContentPane().add(jLabelBairroPesquisa, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 220, -1, -1));
+
+        jComboBoxPesquisa.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Usuario" }));
+        jComboBoxPesquisa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBoxPesquisaActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jComboBoxPesquisa, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 220, 120, 30));
+
+        jTextFieldPesquisa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextFieldPesquisaActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jTextFieldPesquisa, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 220, 570, 30));
+
+        jButtonPesquisar.setBackground(new java.awt.Color(204, 255, 204));
+        jButtonPesquisar.setText("Pesquisar");
+        jButtonPesquisar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonPesquisarActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButtonPesquisar, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 220, 330, 30));
+
         jTableUsuarios.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "Usuário", "Permissão"
+                "Codusuario", "Usuário", "Senha", "Permissao"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false
+                false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
             }
         });
+        jTableUsuarios.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTableUsuariosMouseClicked(evt);
+            }
+        });
         jScrollPaneUsuarios.setViewportView(jTableUsuarios);
         if (jTableUsuarios.getColumnModel().getColumnCount() > 0) {
             jTableUsuarios.getColumnModel().getColumn(0).setResizable(false);
             jTableUsuarios.getColumnModel().getColumn(1).setResizable(false);
+            jTableUsuarios.getColumnModel().getColumn(2).setResizable(false);
+            jTableUsuarios.getColumnModel().getColumn(3).setResizable(false);
         }
 
         getContentPane().add(jScrollPaneUsuarios, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 260, 1170, 300));
@@ -112,10 +159,20 @@ public class TelaUsuario_2_AlterarExcluir extends javax.swing.JFrame {
 
         jButtonSalvar.setBackground(new java.awt.Color(204, 255, 204));
         jButtonSalvar.setText("Salvar");
+        jButtonSalvar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonSalvarActionPerformed(evt);
+            }
+        });
         getContentPane().add(jButtonSalvar, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 570, 330, 40));
 
         jButtonExcluir.setBackground(new java.awt.Color(255, 204, 204));
         jButtonExcluir.setText("Excluir");
+        jButtonExcluir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonExcluirActionPerformed(evt);
+            }
+        });
         getContentPane().add(jButtonExcluir, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 570, 330, 40));
 
         jLabelPainel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/Agenda-PainelFundo.png"))); // NOI18N
@@ -137,6 +194,38 @@ public class TelaUsuario_2_AlterarExcluir extends javax.swing.JFrame {
         controller.botaoVoltar();
         
     }//GEN-LAST:event_jButtonVoltarActionPerformed
+
+    private void jComboBoxPesquisaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxPesquisaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBoxPesquisaActionPerformed
+
+    private void jTextFieldPesquisaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldPesquisaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldPesquisaActionPerformed
+
+    private void jButtonPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPesquisarActionPerformed
+
+        controller.botaoPesquisar();
+        
+    }//GEN-LAST:event_jButtonPesquisarActionPerformed
+
+    private void jButtonSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSalvarActionPerformed
+        
+        controller.botaoSalvar();
+        
+    }//GEN-LAST:event_jButtonSalvarActionPerformed
+
+    private void jButtonExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonExcluirActionPerformed
+        
+        controller.botaoExcluir();
+        
+    }//GEN-LAST:event_jButtonExcluirActionPerformed
+
+    private void jTableUsuariosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableUsuariosMouseClicked
+        
+        controller.mouseClicked();
+        
+    }//GEN-LAST:event_jTableUsuariosMouseClicked
 
     /**
      * @param args the command line arguments
@@ -164,133 +253,6 @@ public class TelaUsuario_2_AlterarExcluir extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(TelaUsuario_2_AlterarExcluir.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -300,12 +262,65 @@ public class TelaUsuario_2_AlterarExcluir extends javax.swing.JFrame {
         });
     }
 
+    public JComboBox<Object> getjComboBoxPermissao() {
+        return jComboBoxPermissao;
+    }
+
+    public void setjComboBoxPermissao(JComboBox<Object> jComboBoxPermissao) {
+        this.jComboBoxPermissao = jComboBoxPermissao;
+    }
+
+    public JComboBox<Object> getjComboBoxPesquisa() {
+        return jComboBoxPesquisa;
+    }
+
+    public void setjComboBoxPesquisa(JComboBox<Object> jComboBoxPesquisa) {
+        this.jComboBoxPesquisa = jComboBoxPesquisa;
+    }
+
+    public JPasswordField getjPasswordFieldSenha() {
+        return jPasswordFieldSenha;
+    }
+
+    public void setjPasswordFieldSenha(JPasswordField jPasswordFieldSenha) {
+        this.jPasswordFieldSenha = jPasswordFieldSenha;
+    }
+
+    public JTable getjTableUsuarios() {
+        return jTableUsuarios;
+    }
+
+    public void setjTableUsuarios(JTable jTableUsuarios) {
+        this.jTableUsuarios = jTableUsuarios;
+    }
+
+    public JTextField getjTextFieldPesquisa() {
+        return jTextFieldPesquisa;
+    }
+
+    public void setjTextFieldPesquisa(JTextField jTextFieldPesquisa) {
+        this.jTextFieldPesquisa = jTextFieldPesquisa;
+    }
+
+    public JTextField getjTextFieldUsuario() {
+        return jTextFieldUsuario;
+    }
+
+    public void setjTextFieldUsuario(JTextField jTextFieldUsuario) {
+        this.jTextFieldUsuario = jTextFieldUsuario;
+    }
+
+    
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup buttonGroup;
     private javax.swing.JButton jButtonExcluir;
+    private javax.swing.JButton jButtonPesquisar;
     private javax.swing.JButton jButtonSalvar;
     private javax.swing.JButton jButtonVoltar;
     private javax.swing.JComboBox<Object> jComboBoxPermissao;
+    private javax.swing.JComboBox<Object> jComboBoxPesquisa;
+    private javax.swing.JLabel jLabelBairroPesquisa;
     private javax.swing.JLabel jLabelImagemFundo;
     private javax.swing.JLabel jLabelPainel;
     private javax.swing.JLabel jLabelPermissao;
@@ -314,6 +329,7 @@ public class TelaUsuario_2_AlterarExcluir extends javax.swing.JFrame {
     private javax.swing.JPasswordField jPasswordFieldSenha;
     private javax.swing.JScrollPane jScrollPaneUsuarios;
     private javax.swing.JTable jTableUsuarios;
+    private javax.swing.JTextField jTextFieldPesquisa;
     private javax.swing.JTextField jTextFieldUsuario;
     // End of variables declaration//GEN-END:variables
 }

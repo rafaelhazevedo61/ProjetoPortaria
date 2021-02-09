@@ -5,6 +5,10 @@
  */
 package controller;
 
+import conexao.ConnectionFactory;
+import dao.ServicosDAO;
+import java.sql.Connection;
+import model.Servicos;
 import view.TelaServico_1_Opcoes;
 import view.TelaServico_3_Cadastrar;
 
@@ -21,6 +25,33 @@ public class TelaServico_3_CadastrarController {
         this.view = view;
     }
     
+    public void cadastrarNovoServico() {
+        
+        String nomeservico = view.getjTextFieldServico().getText();
+        String valor = view.getjFormattedTextFieldValor().getText();
+        String observacao = view.getjTextAreaObservacao().getText();
+        
+        Servicos novoservico;
+        novoservico = new Servicos (nomeservico, valor, observacao);
+        
+        Connection conexao;
+        conexao = ConnectionFactory.getConnection();
+        
+        ServicosDAO dao = new ServicosDAO(conexao);
+        dao.CadastrarServico(novoservico);
+        
+    }
+    
+    public void botaoCadastrar(){
+        
+        cadastrarNovoServico();
+        
+    }
+    
+    public void botaoLimpar(){
+        
+    }
+    
     public void botaoVoltar() {
         
         TelaServico_1_Opcoes tela = new TelaServico_1_Opcoes();
@@ -28,5 +59,6 @@ public class TelaServico_3_CadastrarController {
         view.dispose();
         
     }
+    
     
 }

@@ -6,6 +6,11 @@
 package view;
 
 import controller.TelaServico_2_AlterarExcluirController;
+import javax.swing.JComboBox;
+import javax.swing.JFormattedTextField;
+import javax.swing.JTable;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
 
 /**
  *
@@ -21,6 +26,9 @@ public class TelaServico_2_AlterarExcluir extends javax.swing.JFrame {
     public TelaServico_2_AlterarExcluir() {
         initComponents();
         controller = new TelaServico_2_AlterarExcluirController(this);
+        
+        //INICIALIZAÇÃO DA TABELA
+        controller.tabelaServicos();
         
     }
     
@@ -40,6 +48,10 @@ public class TelaServico_2_AlterarExcluir extends javax.swing.JFrame {
         jLabelValor = new javax.swing.JLabel();
         jFormattedTextFieldValor = new javax.swing.JFormattedTextField();
         jLabelObservacao = new javax.swing.JLabel();
+        jLabelBairroPesquisa = new javax.swing.JLabel();
+        jComboBoxPesquisa = new javax.swing.JComboBox<>();
+        jTextFieldPesquisa = new javax.swing.JTextField();
+        jButtonPesquisar = new javax.swing.JButton();
         jScrollPaneObservacao = new javax.swing.JScrollPane();
         jTextAreaObservacao = new javax.swing.JTextArea();
         jScrollPaneServicos = new javax.swing.JScrollPane();
@@ -72,6 +84,35 @@ public class TelaServico_2_AlterarExcluir extends javax.swing.JFrame {
         jLabelObservacao.setText("Observação");
         getContentPane().add(jLabelObservacao, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 80, -1, -1));
 
+        jLabelBairroPesquisa.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabelBairroPesquisa.setForeground(new java.awt.Color(255, 255, 255));
+        jLabelBairroPesquisa.setText("Pesquisar por");
+        getContentPane().add(jLabelBairroPesquisa, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 270, -1, -1));
+
+        jComboBoxPesquisa.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Serviço" }));
+        jComboBoxPesquisa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBoxPesquisaActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jComboBoxPesquisa, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 270, 120, 30));
+
+        jTextFieldPesquisa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextFieldPesquisaActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jTextFieldPesquisa, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 270, 570, 30));
+
+        jButtonPesquisar.setBackground(new java.awt.Color(204, 255, 204));
+        jButtonPesquisar.setText("Pesquisar");
+        jButtonPesquisar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonPesquisarActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButtonPesquisar, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 270, 330, 30));
+
         jTextAreaObservacao.setColumns(20);
         jTextAreaObservacao.setRows(5);
         jScrollPaneObservacao.setViewportView(jTextAreaObservacao);
@@ -83,15 +124,20 @@ public class TelaServico_2_AlterarExcluir extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Serviço", "Valor", "Observacao"
+                "Codservico", "Serviço", "Valor", "Observacao"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false
+                false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
+            }
+        });
+        jTableServicos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTableServicosMouseClicked(evt);
             }
         });
         jScrollPaneServicos.setViewportView(jTableServicos);
@@ -99,9 +145,10 @@ public class TelaServico_2_AlterarExcluir extends javax.swing.JFrame {
             jTableServicos.getColumnModel().getColumn(0).setResizable(false);
             jTableServicos.getColumnModel().getColumn(1).setResizable(false);
             jTableServicos.getColumnModel().getColumn(2).setResizable(false);
+            jTableServicos.getColumnModel().getColumn(3).setResizable(false);
         }
 
-        getContentPane().add(jScrollPaneServicos, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 260, 1170, 300));
+        getContentPane().add(jScrollPaneServicos, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 310, 1170, 250));
 
         jButtonVoltar.setBackground(new java.awt.Color(255, 255, 204));
         jButtonVoltar.setText("Voltar");
@@ -110,14 +157,24 @@ public class TelaServico_2_AlterarExcluir extends javax.swing.JFrame {
                 jButtonVoltarActionPerformed(evt);
             }
         });
-        getContentPane().add(jButtonVoltar, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 570, 330, 40));
+        getContentPane().add(jButtonVoltar, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 570, 330, 40));
 
         jButtonSalvar.setBackground(new java.awt.Color(204, 255, 204));
         jButtonSalvar.setText("Salvar");
+        jButtonSalvar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonSalvarActionPerformed(evt);
+            }
+        });
         getContentPane().add(jButtonSalvar, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 570, 330, 40));
 
         jButtonExcluir.setBackground(new java.awt.Color(255, 204, 204));
         jButtonExcluir.setText("Excluir");
+        jButtonExcluir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonExcluirActionPerformed(evt);
+            }
+        });
         getContentPane().add(jButtonExcluir, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 570, 330, 40));
 
         jLabelPainel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/Agenda-PainelFundo.png"))); // NOI18N
@@ -135,6 +192,38 @@ public class TelaServico_2_AlterarExcluir extends javax.swing.JFrame {
         controller.botaoVoltar();
         
     }//GEN-LAST:event_jButtonVoltarActionPerformed
+
+    private void jComboBoxPesquisaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxPesquisaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBoxPesquisaActionPerformed
+
+    private void jTextFieldPesquisaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldPesquisaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldPesquisaActionPerformed
+
+    private void jButtonPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPesquisarActionPerformed
+
+        controller.botaoPesquisar();
+
+    }//GEN-LAST:event_jButtonPesquisarActionPerformed
+
+    private void jButtonSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSalvarActionPerformed
+        
+        controller.botaoSalvar();
+        
+    }//GEN-LAST:event_jButtonSalvarActionPerformed
+
+    private void jButtonExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonExcluirActionPerformed
+        
+        controller.botaoExcluir();
+        
+    }//GEN-LAST:event_jButtonExcluirActionPerformed
+
+    private void jTableServicosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableServicosMouseClicked
+        
+        controller.mouseClicked();
+        
+    }//GEN-LAST:event_jTableServicosMouseClicked
 
     /**
      * @param args the command line arguments
@@ -162,69 +251,6 @@ public class TelaServico_2_AlterarExcluir extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(TelaServico_2_AlterarExcluir.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -234,12 +260,65 @@ public class TelaServico_2_AlterarExcluir extends javax.swing.JFrame {
         });
     }
 
+    public JComboBox<Object> getjComboBoxPesquisa() {
+        return jComboBoxPesquisa;
+    }
+
+    public void setjComboBoxPesquisa(JComboBox<Object> jComboBoxPesquisa) {
+        this.jComboBoxPesquisa = jComboBoxPesquisa;
+    }
+
+    public JFormattedTextField getjFormattedTextFieldValor() {
+        return jFormattedTextFieldValor;
+    }
+
+    public void setjFormattedTextFieldValor(JFormattedTextField jFormattedTextFieldValor) {
+        this.jFormattedTextFieldValor = jFormattedTextFieldValor;
+    }
+
+    public JTable getjTableServicos() {
+        return jTableServicos;
+    }
+
+    public void setjTableServicos(JTable jTableServicos) {
+        this.jTableServicos = jTableServicos;
+    }
+
+    public JTextArea getjTextAreaObservacao() {
+        return jTextAreaObservacao;
+    }
+
+    public void setjTextAreaObservacao(JTextArea jTextAreaObservacao) {
+        this.jTextAreaObservacao = jTextAreaObservacao;
+    }
+
+    public JTextField getjTextFieldPesquisa() {
+        return jTextFieldPesquisa;
+    }
+
+    public void setjTextFieldPesquisa(JTextField jTextFieldPesquisa) {
+        this.jTextFieldPesquisa = jTextFieldPesquisa;
+    }
+
+    public JTextField getjTextFieldServico() {
+        return jTextFieldServico;
+    }
+
+    public void setjTextFieldServico(JTextField jTextFieldServico) {
+        this.jTextFieldServico = jTextFieldServico;
+    }
+
+    
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup buttonGroup;
     private javax.swing.JButton jButtonExcluir;
+    private javax.swing.JButton jButtonPesquisar;
     private javax.swing.JButton jButtonSalvar;
     private javax.swing.JButton jButtonVoltar;
+    private javax.swing.JComboBox<Object> jComboBoxPesquisa;
     private javax.swing.JFormattedTextField jFormattedTextFieldValor;
+    private javax.swing.JLabel jLabelBairroPesquisa;
     private javax.swing.JLabel jLabelImagemFundo;
     private javax.swing.JLabel jLabelObservacao;
     private javax.swing.JLabel jLabelPainel;
@@ -249,6 +328,7 @@ public class TelaServico_2_AlterarExcluir extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPaneServicos;
     private javax.swing.JTable jTableServicos;
     private javax.swing.JTextArea jTextAreaObservacao;
+    private javax.swing.JTextField jTextFieldPesquisa;
     private javax.swing.JTextField jTextFieldServico;
     // End of variables declaration//GEN-END:variables
 }

@@ -55,10 +55,20 @@ public class TelaUsuario_1_Opcoes extends javax.swing.JFrame {
 
         jButtonCadastrar.setBackground(new java.awt.Color(204, 255, 204));
         jButtonCadastrar.setText("Cadastrar Novo Usuário");
+        jButtonCadastrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonCadastrarActionPerformed(evt);
+            }
+        });
         getContentPane().add(jButtonCadastrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 320, 400, 40));
 
         jButtonAlterarExcluir.setBackground(new java.awt.Color(255, 204, 204));
         jButtonAlterarExcluir.setText("Alterar ou Excluir Serviço");
+        jButtonAlterarExcluir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonAlterarExcluirActionPerformed(evt);
+            }
+        });
         getContentPane().add(jButtonAlterarExcluir, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 370, 400, 40));
 
         jButtonVoltar.setBackground(new java.awt.Color(255, 255, 204));
@@ -86,6 +96,18 @@ public class TelaUsuario_1_Opcoes extends javax.swing.JFrame {
         
     }//GEN-LAST:event_jButtonVoltarActionPerformed
 
+    private void jButtonCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCadastrarActionPerformed
+        
+        controller.botaoCadastrar();
+        
+    }//GEN-LAST:event_jButtonCadastrarActionPerformed
+
+    private void jButtonAlterarExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAlterarExcluirActionPerformed
+        
+        controller.botaoAlterarExcluir();
+        
+    }//GEN-LAST:event_jButtonAlterarExcluirActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -111,37 +133,6 @@ public class TelaUsuario_1_Opcoes extends javax.swing.JFrame {
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(TelaUsuario_1_Opcoes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */

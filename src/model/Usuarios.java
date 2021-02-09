@@ -15,10 +15,39 @@ public class Usuarios {
     String usuario;
     String senha;
     int permissao;
+
+    public Usuarios() {
+        
+    }
+
+    public Usuarios(int codusuario) {
+        
+        this.codusuario = codusuario;
+        
+    }
     
     public Usuarios(String usuario, String senha) {
+        
         this.usuario = usuario;
         this.senha = senha;
+        
+    }
+
+    public Usuarios(int codusuario, String usuario, String senha, Object permissao) {
+        
+        this.codusuario = codusuario;
+        this.usuario = usuario;
+        this.senha = senha;
+        this.permissao = (Integer) permissao;
+        
+    }
+
+    public Usuarios(String usuario, String senha, int permissao) {
+        
+        this.usuario = usuario;
+        this.senha = senha;
+        this.permissao = (Integer) permissao;
+        
     }
 
     public int getCodusuario() {

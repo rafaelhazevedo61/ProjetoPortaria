@@ -23,14 +23,6 @@ public class TelaCliente_1_OpcoesController {
         this.view = view;
     }
     
-    public void botaoVoltar() {
-        
-        TelaPrincipal telaPrincipal = new TelaPrincipal();
-        telaPrincipal.setVisible(true);
-        view.dispose();
-        
-    }
-    
     public void botaoAlterarExcluir() {
         
         TelaCliente_2_AlterarExcluir tela = new TelaCliente_2_AlterarExcluir();
@@ -43,6 +35,14 @@ public class TelaCliente_1_OpcoesController {
         
         TelaCliente_3_Cadastrar tela = new TelaCliente_3_Cadastrar();
         tela.setVisible(true);
+        view.dispose();
+        
+    }
+    
+    public void botaoVoltar() {
+        
+        TelaPrincipal telaPrincipal = new TelaPrincipal();
+        telaPrincipal.setVisible(true);
         view.dispose();
         
     }
