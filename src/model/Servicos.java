@@ -23,6 +23,10 @@ public class Servicos {
     public Servicos(int codservico) {
         this.codservico = codservico;
     }
+
+    public Servicos(String nome) {
+        this.nome = nome;
+    }
     
     public Servicos(int codservico, String nomeservico, String valor, String observacao) {
         
@@ -71,6 +75,11 @@ public class Servicos {
 
     public void setObservacao(String observacao) {
         this.observacao = observacao;
+    }
+        
+    @Override
+    public String toString() {
+        return getNome(); //To change body of generated methods, choose Tools | Templates.
     }
     
     

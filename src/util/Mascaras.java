@@ -42,6 +42,19 @@ public class Mascaras {
         
     }
     
+    public static void formataHora(JFormattedTextField campo){
+               
+        try {
+            MaskFormatter mascara = new MaskFormatter("##:##");
+            mascara.install(campo);
+            
+        } catch (ParseException ex) {
+
+            JOptionPane.showMessageDialog(null, "Erro ao formatar hora!");
+        }
+        
+    }
+    
     public static void formataTelefoneCelular(JFormattedTextField campo){
                
         try {

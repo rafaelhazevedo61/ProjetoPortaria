@@ -208,6 +208,11 @@ public class Clientes {
     public void setRecebe_email(boolean recebe_email) {
         this.recebe_email = recebe_email;
     }
+        
+    @Override
+    public String toString() {
+        return getNome(); //To change body of generated methods, choose Tools | Templates.
+    }
     
     
     

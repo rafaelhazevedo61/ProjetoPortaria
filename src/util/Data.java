@@ -28,5 +28,5 @@ public class Data {
 	return dataString;
 
     }
-    
+
 }

@@ -32,7 +32,7 @@ public class ClientesDAO {
         
     }
     
-    public Clientes CadastrarCliente (Clientes cliente)  {
+    public Clientes CadastrarCliente (Clientes cliente) {
         
         Connection con = ConnectionFactory.getConnection();
         
@@ -147,6 +147,41 @@ public class ClientesDAO {
         return excluicliente;
     }
     
+    public int RetornaCodclientePorClientes(String cliente){
+        
+        Connection con = ConnectionFactory.getConnection();
+        
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+        
+        String sql = "select codcliente from clientes where nome = ?";
+    
+        try {
+            stmt = con.prepareStatement(sql);
+            stmt.setString(1, cliente);
+            
+            stmt.execute();
+            
+            rs = stmt.getResultSet();
+            
+            if(rs.next()){
+                
+                return rs.getInt("codcliente");
+                
+            }
+            
+        } catch (SQLException ex) {
+            
+            Logger.getLogger(ClientesDAO.class.getName()).log(Level.SEVERE, null, ex);
+            
+            System.out.println("Erro no método RetornaCodclientesPorClientes() na classe ClientesDAO");
+            
+        } 
+        
+        return 0;
+    
+    }
+    
     public Iterable<Clientes> ListarClientes() {
         
         Connection con = ConnectionFactory.getConnection();
@@ -174,6 +209,43 @@ public class ClientesDAO {
             Logger.getLogger(ClientesDAO.class.getName()).log(Level.SEVERE, null, ex);
             
             System.out.println("Erro no método ListarClientes() na classe ClientesDAO");
+            
+        } finally {
+            
+            ConnectionFactory.closeConnection(con, stmt, rs);
+            
+        }
+
+        return clientes;
+    }
+    
+        public Iterable<Clientes> ListarClientesJComboBox() {
+        
+        Connection con = ConnectionFactory.getConnection();
+        
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+
+        List<Clientes> clientes = new ArrayList<>();
+
+        String sql = "SELECT nome\n" +
+        "	FROM clientes;";
+        
+        try {
+            stmt = con.prepareStatement(sql);
+            rs = stmt.executeQuery();
+
+            while (rs.next()) {
+
+                clientes.add(CarregarResultSet2(rs));
+                
+            }
+
+        } catch (SQLException ex) {
+            
+            Logger.getLogger(ClientesDAO.class.getName()).log(Level.SEVERE, null, ex);
+            
+            System.out.println("Erro no método ListarClientesJComboBox() na classe ClientesDAO");
             
         } finally {
             
@@ -244,6 +316,18 @@ public class ClientesDAO {
         cliente.setContato1(rs.getString("contato1"));
         cliente.setContato2(rs.getString("contato2"));
         cliente.setRecebe_email(rs.getBoolean("recebe_email"));
+        
+        return cliente;
+        
+    }
+    
+    public Clientes CarregarResultSet2 (ResultSet rs) throws SQLException {
+        
+        //RESULTSET CONTENDO O CAMPO NOME
+        
+        Clientes cliente = new Clientes();
+        
+        cliente.setNome(rs.getString("nome"));
         
         return cliente;
         

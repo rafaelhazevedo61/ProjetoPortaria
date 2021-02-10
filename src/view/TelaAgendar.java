@@ -5,7 +5,21 @@
  */
 package view;
 
+import conexao.ConnectionFactory;
 import controller.TelaAgendarController;
+import dao.BarbeirosDAO;
+import dao.ClientesDAO;
+import dao.ServicosDAO;
+import java.sql.Connection;
+import javax.swing.JComboBox;
+import javax.swing.JFormattedTextField;
+import javax.swing.JTable;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
+import model.Barbeiros;
+import model.Clientes;
+import model.Servicos;
+import util.Mascaras;
 
 /**
  *
@@ -20,6 +34,39 @@ public class TelaAgendar extends javax.swing.JFrame {
     public TelaAgendar() {
         initComponents();
         controller = new TelaAgendarController(this);
+        
+        //INICIALIZAR JCOMBOBOX CLIENTE
+        Connection con = ConnectionFactory.getConnection();
+        ClientesDAO dao = new ClientesDAO(con);
+        
+        for(Clientes as: dao.ListarClientesJComboBox()){
+            jComboBoxCliente.addItem(as);
+        }
+        
+        //INICIALIZAR JCOMBOBOX BARBEIROS
+        BarbeirosDAO dao2 = new BarbeirosDAO(con);
+        
+        for(Barbeiros as: dao2.ListarBarbeirosJComboBox()){
+            jComboBoxBarbeiro.addItem(as);
+        }
+        
+        //INICIALIZAR JCOMBOBOX SERVIÇOS
+        ServicosDAO dao3 = new ServicosDAO(con);
+        
+        for(Servicos as: dao3.ListarServicosJComboBox()){
+            jComboBoxServico.addItem(as);
+        }
+        
+        //INICIALIZAR TABELA
+        controller.tabelaAgendamentos();
+        
+        //INICIALIZANDO MÁSCARAS DATA E HORA
+        Mascaras.formataData(jFormattedTextFieldData);
+        Mascaras.formataHora(jFormattedTextFieldHora);
+        
+        //O CAMPO DE VALOR VAI SER PREENCHIDO AUTOMATICAMENTE CONFORME SERVIÇO SELECIONADO
+        controller.retornarValorPorServico();
+        
     }
 
     /**
@@ -61,11 +108,11 @@ public class TelaAgendar extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Cliente", "Barbeiro", "Servico", "Valor", "Data", "Hora", "Observacao"
+                "Codagendamento", "Cliente", "Barbeiro", "Servico", "Valor", "Data", "Hora", "Observacao"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false
+                false, false, false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -81,6 +128,7 @@ public class TelaAgendar extends javax.swing.JFrame {
             jTableAgendamentos.getColumnModel().getColumn(4).setResizable(false);
             jTableAgendamentos.getColumnModel().getColumn(5).setResizable(false);
             jTableAgendamentos.getColumnModel().getColumn(6).setResizable(false);
+            jTableAgendamentos.getColumnModel().getColumn(7).setResizable(false);
         }
 
         getContentPane().add(jScrollPaneAgendamentos, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 337, 1150, 270));
@@ -90,7 +138,6 @@ public class TelaAgendar extends javax.swing.JFrame {
         jLabelCliente.setText("Cliente");
         getContentPane().add(jLabelCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 40, -1, -1));
 
-        jComboBoxCliente.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "TEXTO" }));
         jComboBoxCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboBoxClienteActionPerformed(evt);
@@ -103,7 +150,6 @@ public class TelaAgendar extends javax.swing.JFrame {
         jLabelBarbeiro.setText("Barbeiro");
         getContentPane().add(jLabelBarbeiro, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 90, -1, -1));
 
-        jComboBoxBarbeiro.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "TEXTO" }));
         jComboBoxBarbeiro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboBoxBarbeiroActionPerformed(evt);
@@ -116,7 +162,6 @@ public class TelaAgendar extends javax.swing.JFrame {
         jLabelServico.setText("Serviço");
         getContentPane().add(jLabelServico, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 140, -1, -1));
 
-        jComboBoxServico.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "TEXTO" }));
         jComboBoxServico.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboBoxServicoActionPerformed(evt);
@@ -155,6 +200,11 @@ public class TelaAgendar extends javax.swing.JFrame {
 
         jButtonAgendar.setBackground(new java.awt.Color(204, 255, 204));
         jButtonAgendar.setText("Agendar");
+        jButtonAgendar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonAgendarActionPerformed(evt);
+            }
+        });
         getContentPane().add(jButtonAgendar, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 280, 320, 40));
 
         jButtonVoltar.setBackground(new java.awt.Color(255, 255, 204));
@@ -181,7 +231,10 @@ public class TelaAgendar extends javax.swing.JFrame {
     }//GEN-LAST:event_jComboBoxClienteActionPerformed
 
     private void jComboBoxServicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxServicoActionPerformed
-        // TODO add your handling code here:
+        
+        //O CAMPO DE VALOR VAI SER ATUALIZADO AUTOMATICAMENTE CONFORME SERVIÇO SELECIONADO
+        controller.retornarValorPorServico();
+        
     }//GEN-LAST:event_jComboBoxServicoActionPerformed
 
     private void jComboBoxBarbeiroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxBarbeiroActionPerformed
@@ -193,6 +246,12 @@ public class TelaAgendar extends javax.swing.JFrame {
         controller.botaoVoltar();
         
     }//GEN-LAST:event_jButtonVoltarActionPerformed
+
+    private void jButtonAgendarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAgendarActionPerformed
+        
+        controller.botaoCadastrar();
+        
+    }//GEN-LAST:event_jButtonAgendarActionPerformed
            
     /**
      * @param args the command line arguments
@@ -220,9 +279,6 @@ public class TelaAgendar extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(TelaAgendar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -232,6 +288,72 @@ public class TelaAgendar extends javax.swing.JFrame {
         });
     }
 
+    public JComboBox<Object> getjComboBoxBarbeiro() {
+        return jComboBoxBarbeiro;
+    }
+
+    public void setjComboBoxBarbeiro(JComboBox<Object> jComboBoxBarbeiro) {
+        this.jComboBoxBarbeiro = jComboBoxBarbeiro;
+    }
+
+    public JComboBox<Object> getjComboBoxCliente() {
+        return jComboBoxCliente;
+    }
+
+    public void setjComboBoxCliente(JComboBox<Object> jComboBoxCliente) {
+        this.jComboBoxCliente = jComboBoxCliente;
+    }
+
+    public JComboBox<Object> getjComboBoxServico() {
+        return jComboBoxServico;
+    }
+
+    public void setjComboBoxServico(JComboBox<Object> jComboBoxServico) {
+        this.jComboBoxServico = jComboBoxServico;
+    }
+
+    public JFormattedTextField getjFormattedTextFieldData() {
+        return jFormattedTextFieldData;
+    }
+
+    public void setjFormattedTextFieldData(JFormattedTextField jFormattedTextFieldData) {
+        this.jFormattedTextFieldData = jFormattedTextFieldData;
+    }
+
+    public JFormattedTextField getjFormattedTextFieldHora() {
+        return jFormattedTextFieldHora;
+    }
+
+    public void setjFormattedTextFieldHora(JFormattedTextField jFormattedTextFieldHora) {
+        this.jFormattedTextFieldHora = jFormattedTextFieldHora;
+    }
+
+    public JTable getjTableAgendamentos() {
+        return jTableAgendamentos;
+    }
+
+    public void setjTableAgendamentos(JTable jTableAgendamentos) {
+        this.jTableAgendamentos = jTableAgendamentos;
+    }
+
+    public JTextArea getjTextAreaObservacao() {
+        return jTextAreaObservacao;
+    }
+
+    public void setjTextAreaObservacao(JTextArea jTextAreaObservacao) {
+        this.jTextAreaObservacao = jTextAreaObservacao;
+    }
+
+    public JTextField getjTextFieldValor() {
+        return jTextFieldValor;
+    }
+
+    public void setjTextFieldValor(JTextField jTextFieldValor) {
+        this.jTextFieldValor = jTextFieldValor;
+    }
+
+    
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonAgendar;
     private javax.swing.JButton jButtonVoltar;

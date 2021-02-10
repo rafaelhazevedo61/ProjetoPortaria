@@ -145,6 +145,42 @@ public class BarbeirosDAO {
         } 
         
         return excluibarbeiro;
+        
+    }
+    
+    public int RetornaCodbarbeiroPorBarbeiros(String barbeiro) {
+        
+        Connection con = ConnectionFactory.getConnection();
+        
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+        
+        String sql = "select codbarbeiro from barbeiros where nome = ?";
+        
+        try {
+            stmt = con.prepareStatement(sql);
+            stmt.setString(1, barbeiro);
+            
+            stmt.execute();
+            
+            rs = stmt.getResultSet();
+            
+            if(rs.next()){
+                
+                return rs.getInt("codbarbeiro");
+                
+            }
+            
+        } catch (SQLException ex) {
+            
+            Logger.getLogger(BarbeirosDAO.class.getName()).log(Level.SEVERE, null, ex);
+            
+            System.out.println("Erro no método RetornaCodbarbeiroPorBarbeiros() na classe BarbeirosDAO");
+            
+        } 
+        
+        return 0;
+        
     }
     
     public Iterable<Barbeiros> ListarBarbeiros() {
@@ -174,6 +210,43 @@ public class BarbeirosDAO {
             Logger.getLogger(BarbeirosDAO.class.getName()).log(Level.SEVERE, null, ex);
             
             System.out.println("Erro no método ListarBarbeiros() na classe BarbeirosDAO");
+            
+        } finally {
+            
+            ConnectionFactory.closeConnection(con, stmt, rs);
+            
+        }
+
+        return barbeiros;
+    }
+    
+    public Iterable<Barbeiros> ListarBarbeirosJComboBox() {
+        
+        Connection con = ConnectionFactory.getConnection();
+        
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+
+        List<Barbeiros> barbeiros = new ArrayList<>();
+
+        String sql = "SELECT nome\n" +
+        "	FROM barbeiros;";
+        
+        try {
+            stmt = con.prepareStatement(sql);
+            rs = stmt.executeQuery();
+
+            while (rs.next()) {
+
+                barbeiros.add(CarregarResultSet2(rs));
+                
+            }
+
+        } catch (SQLException ex) {
+            
+            Logger.getLogger(BarbeirosDAO.class.getName()).log(Level.SEVERE, null, ex);
+            
+            System.out.println("Erro no método ListarBarbeirosJComboBox() na classe BarbeirosDAO");
             
         } finally {
             
@@ -244,6 +317,18 @@ public class BarbeirosDAO {
         barbeiro.setContato1(rs.getString("contato1"));
         barbeiro.setContato2(rs.getString("contato2"));
         barbeiro.setRecebe_email(rs.getBoolean("recebe_email"));
+        
+        return barbeiro;
+        
+    }
+    
+    public Barbeiros CarregarResultSet2 (ResultSet rs) throws SQLException {
+        
+        //RESULT SET CONTENDO O CAMPO NOME
+        
+        Barbeiros barbeiro = new Barbeiros();
+        
+        barbeiro.setNome(rs.getString("nome"));
         
         return barbeiro;
         

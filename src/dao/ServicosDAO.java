@@ -125,6 +125,76 @@ public class ServicosDAO {
         return excluiservico;
     }
     
+    public int RetornaCodservicoPorServicos(String servico) {
+        
+        Connection con = ConnectionFactory.getConnection();
+        
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+        
+        String sql = "select codservico from servicos where nome = ?";
+        
+        try {
+            stmt = con.prepareStatement(sql);
+            stmt.setString(1, servico);
+            
+            stmt.execute();
+            
+            rs = stmt.getResultSet();
+            
+            if(rs.next()){
+                
+                return rs.getInt("codservico");
+                
+            }
+            
+        } catch (SQLException ex) {
+            
+            Logger.getLogger(ServicosDAO.class.getName()).log(Level.SEVERE, null, ex);
+            
+            System.out.println("Erro no método RetornaCodservicoPorServicos() na classe ServicosDAO");
+            
+        } 
+        
+        return 0;
+        
+    }
+    
+    public double RetornaValorPorServico(String servico) {
+        
+        Connection con = ConnectionFactory.getConnection();
+        
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+        
+        String sql = "select valor from servicos where nome = ?";
+        
+        try {
+            stmt = con.prepareStatement(sql);
+            stmt.setString(1, servico);
+            
+            stmt.execute();
+            
+            rs = stmt.getResultSet();
+            
+            if(rs.next()){
+                
+                return rs.getDouble("valor");
+                
+            }
+            
+        } catch (SQLException ex) {
+            
+            Logger.getLogger(ServicosDAO.class.getName()).log(Level.SEVERE, null, ex);
+            
+            System.out.println("Erro no método RetornaValorPorServico() na classe ServicosDAO");
+            
+        } 
+        
+        return 0;
+        
+    }
+    
     public Iterable<Servicos> ListarServicos() {
         
         Connection con = ConnectionFactory.getConnection();
@@ -152,6 +222,43 @@ public class ServicosDAO {
             Logger.getLogger(ClientesDAO.class.getName()).log(Level.SEVERE, null, ex);
             
             System.out.println("Erro no método ListarServicos() na classe ServicosDAO");
+            
+        } finally {
+            
+            ConnectionFactory.closeConnection(con, stmt, rs);
+            
+        }
+
+        return servicos;
+    }
+    
+    public Iterable<Servicos> ListarServicosJComboBox() {
+        
+        Connection con = ConnectionFactory.getConnection();
+        
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+
+        List<Servicos> servicos = new ArrayList<>();
+
+        String sql = "SELECT nome\n" +
+        "	FROM servicos;";
+        
+        try {
+            stmt = con.prepareStatement(sql);
+            rs = stmt.executeQuery();
+
+            while (rs.next()) {
+
+                servicos.add(CarregarResultSet2(rs));
+                
+            }
+
+        } catch (SQLException ex) {
+            
+            Logger.getLogger(ClientesDAO.class.getName()).log(Level.SEVERE, null, ex);
+            
+            System.out.println("Erro no método ListarServicosJComboBox() na classe ServicosDAO");
             
         } finally {
             
@@ -212,6 +319,18 @@ public class ServicosDAO {
         servico.setNome(rs.getString("nome"));
         servico.setValor(rs.getDouble("valor"));
         servico.setObservacao(rs.getString("observacao"));
+        
+        return servico;
+        
+    }
+    
+    public Servicos CarregarResultSet2 (ResultSet rs) throws SQLException {
+        
+        //RESULT SET CONTENDO CAMPO NOME
+        
+        Servicos servico = new Servicos();
+        
+        servico.setNome(rs.getString("nome"));
         
         return servico;
         

@@ -1,0 +1,62 @@
+Funcionalidades implantadas:
+
+> TELAS - 2 HORAS
+
+> 3 HORAS E MEIA
+- Cadastrar barbeiro
+- Listar tabela de barbeiros
+- Selecionar registro na tabela de barbeiros
+- Atualizar barbeiro
+- Excluir barbeiro
+- Pesquisar barbeiro por nome
+
+> 1 HORA
+- Cadastrar cliente
+- Listar tabela de barbeiros
+- Selecionar registro na tabela de barbeiros
+- Atualizar barbeiro
+- Excluir barbeiro
+- Pesquisar barbeiro por nome
+
+> 23:16 - 00:11 - 1 HORA
+- Cadastrar serviço
+- Listar tabela de serviços
+- Selecionar registro na tabela de serviços
+- Atualizar serviços
+- Excluir Serviços
+- Pesquisar serviços
+
+> 00:16 - 00:46 - 30 MINUTOS // 8 HORAS ATÉ O MOMENTO
+- Cadastrar usuario
+- Listar tabela de usuários
+- Selecionar registro na tabela de usuários
+- Atualizar usuários
+- Excluir usuários
+- Pesquisar usuários
+
+> 09:30 - 15:40 - 6 HORAS E 10 MINUTOS // 14 HORAS E 10 MINUTOS ATÉ O MOMENTO
+- Cadastrar agendamento
+- Preencher JComboBox de Clientes 
+- Preencher JComboBox de Barbeiros
+- Preencher JComboBox de Serviços 
+- Preencher JTextField de Valor de acordo com o Serviço selecionado 
+- Configurar máscaras do campo data e hora 
+- Listar tabela de agendamentos 
+- Selecionar registro na tabela de agendamentos
+- Atualizar usuarios
+- Excluir usuarios
+- Pesquisar usuarios
+- Configurar tabela da tela de agendar para funcionar com inner join
+
+> 
+- Realizar tratamento de campos vazios/nulos
+
+//////////////////////////
+codagendamento
+cliente
+barbeiro
+servico
+valor
+data
+hora
+observacao
