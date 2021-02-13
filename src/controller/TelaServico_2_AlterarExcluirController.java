@@ -53,26 +53,48 @@ public class TelaServico_2_AlterarExcluirController {
         
         JTable tabelaServicos = view.getjTableServicos();
         
+        /*PREENCHIMENTO OBRIGATORIO*/String nomeservico = view.getjTextFieldServico().getText();
+        /*PREENCHIMENTO OBRIGATORIO*/String valor = view.getjFormattedTextFieldValor().getText();
+        /*PREENCHIMENTO NÃO OBRIGATORIO*/String observacao = view.getjTextAreaObservacao().getText();
+        
         if(tabelaServicos.getSelectedRow() == -1){
             
             JOptionPane.showMessageDialog(null,"Para alterar um cadastro, é preciso selecionar um registro na tabela");
             
         } else {
             
-            int codservico = ((int)tabelaServicos.getValueAt(tabelaServicos.getSelectedRow(),0));
-            String nomeservico = view.getjTextFieldServico().getText();
-            String valor = view.getjFormattedTextFieldValor().getText();
-            String observacao = view.getjTextAreaObservacao().getText();
+            //TRATAMENTO DE CAMPOS NULOS
+            if(nomeservico.trim().isEmpty() == false) {
+                
+                if(valor.trim().isEmpty() == false) {
             
-            Servicos atualizaservicos;
-            atualizaservicos = new Servicos(codservico, nomeservico, valor, observacao);
-            
-            Connection conexao;
-            conexao = ConnectionFactory.getConnection();
-            
-            ServicosDAO dao = new ServicosDAO(conexao);
-            dao.AtualizarServico(atualizaservicos);
-            
+                    //ABRINDO CONEXAO COM O BANCO DE DADOS
+                    Connection conexao;
+                    conexao = ConnectionFactory.getConnection();
+
+                    //RECUPERANDO O ID DO CAMPO SELECIONADO
+                    int codservico = ((int)tabelaServicos.getValueAt(tabelaServicos.getSelectedRow(),0));
+
+                    //CARREGANDO O CONSTRUTOR DA CLASSE MODELO
+                    Servicos atualizaservicos;
+                    atualizaservicos = new Servicos(codservico, nomeservico, valor, observacao);
+
+                    //PASSANDO O CONSTRUTOR DA CLASSE MODELO COMO PARÂMETRO PARA O MÉTODO NA CLASSE DAO
+                    ServicosDAO dao = new ServicosDAO(conexao);
+                    dao.AtualizarServico(atualizaservicos);
+                    
+                } else {
+                    //valor
+                    JOptionPane.showMessageDialog(null, "Campo de valor tabelado não pode estar vazio!");
+                    
+                }
+                
+            } else {
+                //nomeservico
+                JOptionPane.showMessageDialog(null, "Campo de nome serviço não pode estar vazio!");
+                
+            }
+
         }
         
     }

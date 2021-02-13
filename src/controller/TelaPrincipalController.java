@@ -76,4 +76,38 @@ public class TelaPrincipalController {
     }
     //BARRA MENU - FIM
     
+    //SISTEMA DE PERMISSÕES
+    public void permissionamentoMenus(){
+        
+        String permissaoUsuarioLogado = System.getProperty("permissaoUsuario");
+        
+        if(permissaoUsuarioLogado.equals("Recepcionista")){
+            
+            //MENUS DESABILITADOS PARA PERMISSÃO DE RECEPCIONISTA
+            view.getjMenuItemBarbeiro().setEnabled(false);
+            view.getjMenuItemServico().setEnabled(false);
+            view.getjMenuItemUsuario().setEnabled(false);
+            
+        }
+        
+        if(permissaoUsuarioLogado.equals("Barbeiro")){
+            
+            //MENUS DESABILITADOS PARA PERMISSÃO DE BARBEIRO
+            view.getjMenuItemBarbeiro().setEnabled(false);
+            view.getjMenuItemCliente().setEnabled(false);
+            view.getjMenuItemServico().setEnabled(false);
+            view.getjMenuItemUsuario().setEnabled(false);
+            
+        }
+        
+        if(permissaoUsuarioLogado.equals("Administrador")){
+            
+            //MENUS DESABILITADOS PARA PERMISSÃO DE ADMINISTRADOR
+            //TUDO LIBERADO
+            
+        }
+        
+        
+    }
+    
 }

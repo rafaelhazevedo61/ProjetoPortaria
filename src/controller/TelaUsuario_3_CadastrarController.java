@@ -8,6 +8,7 @@ package controller;
 import conexao.ConnectionFactory;
 import dao.UsuariosDAO;
 import java.sql.Connection;
+import javax.swing.JOptionPane;
 import model.Usuarios;
 import view.TelaUsuario_1_Opcoes;
 import view.TelaUsuario_3_Cadastrar;
@@ -27,18 +28,45 @@ public class TelaUsuario_3_CadastrarController {
     
     public void cadastrarNovoServico() {
         
-        String usuario = view.getjTextFieldUsuario().getText();
-        String senha = view.getjPasswordFieldSenha().getText();
-        int permissao = view.getjComboBoxPermissao().getSelectedIndex();
+        /*PREENCHIMENTO OBRIGATORIO*/String usuario = view.getjTextFieldUsuario().getText().toUpperCase();
+        /*PREENCHIMENTO OBRIGATORIO*/String senha = view.getjPasswordFieldSenha().getText();
+        /*PREENCHIMENTO OBRIGATORIO*/int permissao = view.getjComboBoxPermissao().getSelectedIndex();
         
-        Usuarios novousuario;
-        novousuario = new Usuarios (usuario, senha, permissao);
-        
-        Connection conexao;
-        conexao = ConnectionFactory.getConnection();
-        
-        UsuariosDAO dao = new UsuariosDAO(conexao);
-        dao.CadastrarUsuario(novousuario);
+        //TRATAMENTO DE CAMPOS NULOS
+        if(usuario.trim().isEmpty() == false){
+            
+            if(senha.trim().isEmpty() == false){
+                
+                if(permissao != 0) {
+                    
+                    //ABRINDO CONEXAO COM O BANCO DE DADOS
+                    Connection conexao;
+                    conexao = ConnectionFactory.getConnection();
+                    
+                    //CARREGANDO O CONSTRUTOR DA CLASSE MODELO
+                    Usuarios novousuario;
+                    novousuario = new Usuarios (usuario, senha, permissao);
+                    
+                    //PASSANDO O CONSTRUTOR DA CLASSE MODELO COMO PARÂMETRO
+                    UsuariosDAO dao = new UsuariosDAO(conexao);
+                    dao.CadastrarUsuario(novousuario);
+                    
+                    
+                } else {
+                    //permissao
+                    JOptionPane.showMessageDialog(null, "Campo de permissao não pode estar vazio!");
+                }
+                
+            } else {
+                //senha
+                JOptionPane.showMessageDialog(null, "Campo de senha não pode estar vazio!");
+            }
+            
+        } else {
+            //usuario
+            JOptionPane.showMessageDialog(null, "Campo de usuario não pode estar vazio!");
+            
+        }
         
     }
     

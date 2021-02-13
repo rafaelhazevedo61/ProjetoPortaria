@@ -37,13 +37,13 @@ public class TelaUsuario_2_AlterarExcluirController {
         
         JTextField usuario = view.getjTextFieldUsuario();
         JPasswordField senha = view.getjPasswordFieldSenha();
-        JComboBox permissao = view.getjComboBoxPermissao();
+//        JComboBox permissao = view.getjComboBoxPermissao();
         
         if(tabelaUsuarios.getSelectedRow() != -1){
             
             usuario.setText(tabelaUsuarios.getValueAt(tabelaUsuarios.getSelectedRow(), 1).toString());
             senha.setText(tabelaUsuarios.getValueAt(tabelaUsuarios.getSelectedRow(), 2).toString());
-            permissao.setSelectedIndex((Integer) tabelaUsuarios.getValueAt(tabelaUsuarios.getSelectedRow(), 3));
+//            permissao.setSelectedIndex((Integer) tabelaUsuarios.getValueAt(tabelaUsuarios.getSelectedRow(), 3));
    
         }
         
@@ -53,25 +53,53 @@ public class TelaUsuario_2_AlterarExcluirController {
         
         JTable tabelaUsuarios = view.getjTableUsuarios();
         
+        /*PREENCHIMENTO OBRIGATORIO*/String usuario = view.getjTextFieldUsuario().getText();
+        /*PREENCHIMENTO OBRIGATORIO*/String senha = view.getjPasswordFieldSenha().getText();
+        /*PREENCHIMENTO OBRIGATORIO*/int permissao = view.getjComboBoxPermissao().getSelectedIndex();
+
         if(tabelaUsuarios.getSelectedRow() == -1){
             
             JOptionPane.showMessageDialog(null,"Para alterar um cadastro, é preciso selecionar um registro na tabela");
             
         } else {
             
-            int codusuario = ((int)tabelaUsuarios.getValueAt(tabelaUsuarios.getSelectedRow(),0));
-            String usuario = view.getjTextFieldUsuario().getText();
-            String senha = view.getjPasswordFieldSenha().getText();
-            Object permissao = view.getjComboBoxPermissao().getSelectedIndex();
-            
-            Usuarios atualizausuarios;
-            atualizausuarios = new Usuarios(codusuario, usuario, senha, permissao);
-            
-            Connection conexao;
-            conexao = ConnectionFactory.getConnection();
-            
-            UsuariosDAO dao = new UsuariosDAO(conexao);
-            dao.AtualizarUsuario(atualizausuarios);
+            //TRATAMENTO DE CAMPOS NULOS
+            if(usuario.trim().isEmpty() == false){
+
+                if(senha.trim().isEmpty() == false){
+
+                    if(permissao != 0) {
+
+                        //ABRINDO CONEXÃO COM O BANCO DE DADOS
+                        Connection conexao;
+                        conexao = ConnectionFactory.getConnection();
+
+                        //RECUPERANDO O ID DO CAMPO SELECIONADO
+                        int codusuario = ((int)tabelaUsuarios.getValueAt(tabelaUsuarios.getSelectedRow(),0));
+
+                        //CARREGANDO O CONSTRUTOR DA CLASSE MODELO
+                        Usuarios atualizausuarios;
+                        atualizausuarios = new Usuarios(codusuario, usuario, senha, permissao);
+
+                        //PASSANDO O CONSTRUTOR DA CLASSE MODELO COMO PARÂMETRO PARA O MÉTODO NA CLASSE DAO
+                        UsuariosDAO dao = new UsuariosDAO(conexao);
+                        dao.AtualizarUsuario(atualizausuarios);
+
+                    } else {
+                        //permissao
+                        JOptionPane.showMessageDialog(null, "Campo de permissao não pode estar vazio!");
+                    }
+
+                } else {
+                    //senha
+                    JOptionPane.showMessageDialog(null, "Campo de senha não pode estar vazio!");
+                }
+
+            } else {
+                //usuario
+                JOptionPane.showMessageDialog(null, "Campo de usuario não pode estar vazio!");
+
+            }
             
         }
         
@@ -118,13 +146,13 @@ public class TelaUsuario_2_AlterarExcluirController {
         
         UsuariosDAO dao = new UsuariosDAO(con);
 
-        for (Usuarios c : dao.ListarUsuarios()) {
+        for (Usuarios c : dao.ListarUsuariosComInnerJoin()) {
         
             model.addRow(new Object[]{
                 c.getCodusuario(),
                 c.getUsuario(),
                 c.getSenha(),
-                c.getPermissao()
+                /*INNER JOIN*/c.getPermissaoString()
                 
 
             });
@@ -140,13 +168,13 @@ public class TelaUsuario_2_AlterarExcluirController {
         
         UsuariosDAO dao = new UsuariosDAO(con);
 
-        for (Usuarios c : dao.ListarUsuariosPorUsuario(usuariopesquisa)) {
+        for (Usuarios c : dao.ListarUsuariosPorUsuarioComInnerJoin(usuariopesquisa)) {
         
             model.addRow(new Object[]{
                 c.getCodusuario(),
                 c.getUsuario(),
                 c.getSenha(),
-                c.getPermissao()
+                /*INNER JOIN*/c.getPermissaoString()
                 
             });
         }

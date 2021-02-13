@@ -157,7 +157,7 @@ public class TelaServico_2_AlterarExcluir extends javax.swing.JFrame {
                 jButtonVoltarActionPerformed(evt);
             }
         });
-        getContentPane().add(jButtonVoltar, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 570, 330, 40));
+        getContentPane().add(jButtonVoltar, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 570, 330, 40));
 
         jButtonSalvar.setBackground(new java.awt.Color(204, 255, 204));
         jButtonSalvar.setText("Salvar");
@@ -166,7 +166,7 @@ public class TelaServico_2_AlterarExcluir extends javax.swing.JFrame {
                 jButtonSalvarActionPerformed(evt);
             }
         });
-        getContentPane().add(jButtonSalvar, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 570, 330, 40));
+        getContentPane().add(jButtonSalvar, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 570, 330, 40));
 
         jButtonExcluir.setBackground(new java.awt.Color(255, 204, 204));
         jButtonExcluir.setText("Excluir");
@@ -175,7 +175,7 @@ public class TelaServico_2_AlterarExcluir extends javax.swing.JFrame {
                 jButtonExcluirActionPerformed(evt);
             }
         });
-        getContentPane().add(jButtonExcluir, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 570, 330, 40));
+        getContentPane().add(jButtonExcluir, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 570, 330, 40));
 
         jLabelPainel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/Agenda-PainelFundo.png"))); // NOI18N
         getContentPane().add(jLabelPainel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 1300, 610));
@@ -308,8 +308,6 @@ public class TelaServico_2_AlterarExcluir extends javax.swing.JFrame {
         this.jTextFieldServico = jTextFieldServico;
     }
 
-    
-    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup buttonGroup;
     private javax.swing.JButton jButtonExcluir;

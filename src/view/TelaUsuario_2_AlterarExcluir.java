@@ -5,11 +5,15 @@
  */
 package view;
 
+import conexao.ConnectionFactory;
 import controller.TelaUsuario_2_AlterarExcluirController;
+import dao.UsuariosPermissaoDAO;
+import java.sql.Connection;
 import javax.swing.JComboBox;
 import javax.swing.JPasswordField;
 import javax.swing.JTable;
 import javax.swing.JTextField;
+import model.UsuariosPermissao;
 
 /**
  *
@@ -25,6 +29,14 @@ public class TelaUsuario_2_AlterarExcluir extends javax.swing.JFrame {
     public TelaUsuario_2_AlterarExcluir() {
         initComponents();
         controller = new TelaUsuario_2_AlterarExcluirController(this);
+        
+        //INICIALIZAR JCOMBOBOX CLIENTE
+        Connection con = ConnectionFactory.getConnection();
+        UsuariosPermissaoDAO dao = new UsuariosPermissaoDAO(con);
+        
+        for(UsuariosPermissao as: dao.ListarPermissoesJComboBox()){
+            jComboBoxPermissao.addItem(as);
+        }
         
         //INICIALIZAR TABELA
         controller.tabelaUsuarios();
@@ -80,7 +92,7 @@ public class TelaUsuario_2_AlterarExcluir extends javax.swing.JFrame {
         jLabelPermissao.setText("Permissão");
         getContentPane().add(jLabelPermissao, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 170, -1, -1));
 
-        jComboBoxPermissao.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "TEXTO", "TEXTO2" }));
+        jComboBoxPermissao.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " " }));
         jComboBoxPermissao.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboBoxPermissaoActionPerformed(evt);

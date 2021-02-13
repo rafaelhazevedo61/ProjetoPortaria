@@ -63,7 +63,7 @@ public class TelaUsuario_1_Opcoes extends javax.swing.JFrame {
         getContentPane().add(jButtonCadastrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 320, 400, 40));
 
         jButtonAlterarExcluir.setBackground(new java.awt.Color(255, 204, 204));
-        jButtonAlterarExcluir.setText("Alterar ou Excluir Serviço");
+        jButtonAlterarExcluir.setText("Alterar ou Excluir Usuário");
         jButtonAlterarExcluir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonAlterarExcluirActionPerformed(evt);

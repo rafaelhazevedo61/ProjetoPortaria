@@ -183,6 +183,41 @@ public class BarbeirosDAO {
         
     }
     
+    public String RetornaEmailPorCodbarbeiro(int codbarbeiro){
+        
+        Connection con = ConnectionFactory.getConnection();
+        
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+        
+        String sql = "select email from barbeiros where codbarbeiro = ?";
+    
+        try {
+            stmt = con.prepareStatement(sql);
+            stmt.setInt(1, codbarbeiro);
+            
+            stmt.execute();
+            
+            rs = stmt.getResultSet();
+            
+            if(rs.next()){
+                
+                return rs.getString("email");
+                
+            }
+            
+        } catch (SQLException ex) {
+            
+            Logger.getLogger(ClientesDAO.class.getName()).log(Level.SEVERE, null, ex);
+            
+            System.out.println("Erro no método RetornaEmailPorCodbarbeiro() na classe ClientesDAO");
+            
+        } 
+        
+        return "";
+    
+    }
+    
     public Iterable<Barbeiros> ListarBarbeiros() {
         
         Connection con = ConnectionFactory.getConnection();

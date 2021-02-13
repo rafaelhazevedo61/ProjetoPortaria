@@ -15,6 +15,7 @@ public class Usuarios {
     String usuario;
     String senha;
     int permissao;
+    /*INNER JOIN*/String permissaoString;
 
     public Usuarios() {
         
@@ -82,6 +83,15 @@ public class Usuarios {
         this.permissao = permissao;
     }
     
+    //INNER JOIN//
+
+    public String getPermissaoString() {
+        return permissaoString;
+    }
+
+    public void setPermissaoString(String permissaoString) {
+        this.permissaoString = permissaoString;
+    }
     
    
     

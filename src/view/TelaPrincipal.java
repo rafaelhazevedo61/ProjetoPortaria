@@ -22,6 +22,10 @@ public class TelaPrincipal extends javax.swing.JFrame {
     public TelaPrincipal() {
         initComponents();
         controller = new TelaPrincipalController(this);
+        
+        //MÉTODO RESPONSÁVEL POR CONTROLAR OS MENUS VIA PERMISSÃO
+        controller.permissionamentoMenus();
+        
     }
 
     /**
@@ -46,6 +50,8 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jMenuItemAgendamentos = new javax.swing.JMenuItem();
         jMenuRelatorio = new javax.swing.JMenu();
         jMenuSair = new javax.swing.JMenu();
+        jMenuItemSair = new javax.swing.JMenuItem();
+        jMenuItemSobre = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -116,10 +122,28 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenuOperacao);
 
-        jMenuRelatorio.setText("<html>\n<b>Relatório</b>\n</html>");
+        jMenuRelatorio.setText("<html> <b>Relatório</b> </html>");
         jMenuBar1.add(jMenuRelatorio);
 
-        jMenuSair.setText("<html>\n<b>Sair</b>\n</html>");
+        jMenuSair.setText("<html> <b>Outros</b> </html>");
+        jMenuSair.setActionCommand("<html> <b>Outros</b> </html>");
+        jMenuSair.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuSairActionPerformed(evt);
+            }
+        });
+
+        jMenuItemSair.setText("Sair");
+        jMenuItemSair.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemSairActionPerformed(evt);
+            }
+        });
+        jMenuSair.add(jMenuItemSair);
+
+        jMenuItemSobre.setText("Sobre");
+        jMenuSair.add(jMenuItemSobre);
+
         jMenuBar1.add(jMenuSair);
 
         setJMenuBar(jMenuBar1);
@@ -174,6 +198,20 @@ public class TelaPrincipal extends javax.swing.JFrame {
         controller.menuServico();
         
     }//GEN-LAST:event_jMenuItemServicoActionPerformed
+
+    private void jMenuSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuSairActionPerformed
+   
+    }//GEN-LAST:event_jMenuSairActionPerformed
+
+    private void jMenuItemSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemSairActionPerformed
+        
+        System.setProperty("usuarioLogado", "");
+        
+        TelaLogin telaLogin = new TelaLogin();
+        telaLogin.setVisible(true);
+        dispose();
+        
+    }//GEN-LAST:event_jMenuItemSairActionPerformed
 
     /**
      * @param args the command line arguments
@@ -265,6 +303,24 @@ public class TelaPrincipal extends javax.swing.JFrame {
         this.jMenuItemUsuario = jMenuItemUsuario;
     }
 
+    public JMenuItem getjMenuItemSair() {
+        return jMenuItemSair;
+    }
+
+    public void setjMenuItemSair(JMenuItem jMenuItemSair) {
+        this.jMenuItemSair = jMenuItemSair;
+    }
+
+    public JMenuItem getjMenuItemSobre() {
+        return jMenuItemSobre;
+    }
+
+    public void setjMenuItemSobre(JMenuItem jMenuItemSobre) {
+        this.jMenuItemSobre = jMenuItemSobre;
+    }
+    
+    
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabelImagemFundo;
     private javax.swing.JMenuBar jMenuBar1;
@@ -273,7 +329,9 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItemAgendar;
     private javax.swing.JMenuItem jMenuItemBarbeiro;
     private javax.swing.JMenuItem jMenuItemCliente;
+    private javax.swing.JMenuItem jMenuItemSair;
     private javax.swing.JMenuItem jMenuItemServico;
+    private javax.swing.JMenuItem jMenuItemSobre;
     private javax.swing.JMenuItem jMenuItemUsuario;
     private javax.swing.JMenu jMenuOperacao;
     private javax.swing.JMenu jMenuRelatorio;

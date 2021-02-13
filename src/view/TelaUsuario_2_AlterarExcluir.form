@@ -94,9 +94,8 @@
     <Component class="javax.swing.JComboBox" name="jComboBoxPermissao">
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="2">
-            <StringItem index="0" value="TEXTO"/>
-            <StringItem index="1" value="TEXTO2"/>
+          <StringArray count="1">
+            <StringItem index="0" value=" "/>
           </StringArray>
         </Property>
       </Properties>

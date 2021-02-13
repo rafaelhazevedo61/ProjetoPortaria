@@ -86,12 +86,13 @@ public class TelaLogin extends javax.swing.JFrame {
 
     private void jButtonEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEntrarActionPerformed
         
+        controller.verificaPermissao();
         controller.botaoEntrar();
         
     }//GEN-LAST:event_jButtonEntrarActionPerformed
 
     /**
-     * @param args the command line arguments
+     * @param args the command line argumentsstea
      */
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -142,8 +143,6 @@ public class TelaLogin extends javax.swing.JFrame {
         this.jTextFieldUsuario = jTextFieldUsuario;
     }
     
-    
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonEntrar;
     private javax.swing.JLabel jLabelImagemFundo;

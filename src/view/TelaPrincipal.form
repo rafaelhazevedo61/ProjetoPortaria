@@ -86,13 +86,32 @@
         </Menu>
         <Menu class="javax.swing.JMenu" name="jMenuRelatorio">
           <Properties>
-            <Property name="text" type="java.lang.String" value="&lt;html&gt;&#xa;&lt;b&gt;Relat&#xf3;rio&lt;/b&gt;&#xa;&lt;/html&gt;"/>
+            <Property name="text" type="java.lang.String" value="&lt;html&gt; &lt;b&gt;Relat&#xf3;rio&lt;/b&gt; &lt;/html&gt;"/>
           </Properties>
         </Menu>
         <Menu class="javax.swing.JMenu" name="jMenuSair">
           <Properties>
-            <Property name="text" type="java.lang.String" value="&lt;html&gt;&#xa;&lt;b&gt;Sair&lt;/b&gt;&#xa;&lt;/html&gt;"/>
+            <Property name="text" type="java.lang.String" value="&lt;html&gt; &lt;b&gt;Outros&lt;/b&gt; &lt;/html&gt;"/>
+            <Property name="actionCommand" type="java.lang.String" value="&lt;html&gt; &lt;b&gt;Outros&lt;/b&gt; &lt;/html&gt;"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuSairActionPerformed"/>
+          </Events>
+          <SubComponents>
+            <MenuItem class="javax.swing.JMenuItem" name="jMenuItemSair">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Sair"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItemSairActionPerformed"/>
+              </Events>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="jMenuItemSobre">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Sobre"/>
+              </Properties>
+            </MenuItem>
+          </SubComponents>
         </Menu>
       </SubComponents>
     </Menu>

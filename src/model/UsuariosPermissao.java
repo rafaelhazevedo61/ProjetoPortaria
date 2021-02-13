@@ -30,6 +30,10 @@ public class UsuariosPermissao {
         this.descricao = descricao;
     }
     
+    @Override
+    public String toString() {
+        return getDescricao(); //To change body of generated methods, choose Tools | Templates.
+    }
     
     
 }

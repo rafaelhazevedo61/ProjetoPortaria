@@ -8,6 +8,7 @@ package controller;
 import conexao.ConnectionFactory;
 import dao.ServicosDAO;
 import java.sql.Connection;
+import javax.swing.JOptionPane;
 import model.Servicos;
 import view.TelaServico_1_Opcoes;
 import view.TelaServico_3_Cadastrar;
@@ -27,18 +28,38 @@ public class TelaServico_3_CadastrarController {
     
     public void cadastrarNovoServico() {
         
-        String nomeservico = view.getjTextFieldServico().getText();
-        String valor = view.getjFormattedTextFieldValor().getText();
-        String observacao = view.getjTextAreaObservacao().getText();
+        /*PREENCHIMENTO OBRIGATORIO*/String nomeservico = view.getjTextFieldServico().getText();
+        /*PREENCHIMENTO OBRIGATORIO*/String valor = view.getjFormattedTextFieldValor().getText();
+        /*PREENCHIMENTO NÃO OBRIGATORIO*/String observacao = view.getjTextAreaObservacao().getText();
         
-        Servicos novoservico;
-        novoservico = new Servicos (nomeservico, valor, observacao);
-        
-        Connection conexao;
-        conexao = ConnectionFactory.getConnection();
-        
-        ServicosDAO dao = new ServicosDAO(conexao);
-        dao.CadastrarServico(novoservico);
+            //TRATAMENTO DE CAMPOS NULOS
+            if(nomeservico.trim().isEmpty() == false) {
+                
+                if(valor.trim().isEmpty() == false) {
+            
+                    //ABRINDO CONEXAO COM O BANCO DE DADOS
+                    Connection conexao;
+                    conexao = ConnectionFactory.getConnection();
+
+                    //CARREGANDO O CONSTRUTOR DA CLASSE MODELO
+                    Servicos novoservico;
+                    novoservico = new Servicos (nomeservico, valor, observacao);
+
+                    //PASSANDO O CONSTRUTOR DA CLASSE MODELO COMO PARÂMETRO PARA O MÉTODO NA CLASSE DAO
+                    ServicosDAO dao = new ServicosDAO(conexao);
+                    dao.CadastrarServico(novoservico);
+                    
+                } else {
+                    //valor
+                    JOptionPane.showMessageDialog(null, "Campo de valor tabelado não pode estar vazio!");
+                    
+                }
+                
+            } else {
+                //nomeservico
+                JOptionPane.showMessageDialog(null, "Campo de nome serviço não pode estar vazio!");
+                
+            }
         
     }
     

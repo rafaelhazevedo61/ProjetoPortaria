@@ -1,4 +1,4 @@
-Funcionalidades implantadas:
+Funcionalidades implantadas: 11:14
 
 > TELAS - 2 HORAS
 
@@ -48,15 +48,45 @@ Funcionalidades implantadas:
 - Pesquisar usuarios
 - Configurar tabela da tela de agendar para funcionar com inner join
 
-> 
+> 00:20 - 01:00 - 40 MINUTOS // 14 HORAS E 50 MINUTOS ATÉ O MOMENTO
 - Realizar tratamento de campos vazios/nulos
+- Feito tratamento de campos nulos na tela de agendamentos
+- Feito tratamento de campos nulos na tela de agendar
+- (PENDENTE) Carregar jComboBox de sexo na tela TelaBarbeiro_2_AlterarExcluir
+- Feito tratamento de campos nulos na tela TelaBarbeiro_2_AlterarExcluir
+- (PENDENTE) Carregar jComboBox de sexo na tela TelaBarbeiro_3_Cadastrar
+- Feito tratamento de campos nulos na tela TelaBarbeiro_3_Cadastrar
+- (PENDENTE) Carregar jComboBox de sexo na tela TelaCliente_2_AlterarExcluir
+- Feito tratamento de campos nulos na tela TelaCliente_2_AlterarExcluir
+- (PENDENTE) Carregar jComboBox de sexo na tela TelaCliente_3_Cadastrar
+- Feito tratamento de campos nulos na tela TelaCliente_3_Cadastrar
 
-//////////////////////////
-codagendamento
-cliente
-barbeiro
+> 17:50 - 18:10 - 20 MINUTOS // 15 HORAS E 10 MINUTOS ATÉ O MOMENTO
+- Feito tratamento de campos nulos na tela TelaServico_2_AlterarExcluir
+- Feito tratamento de campos nulos na tela TelaServico_3_Cadastrar
+- Feito tratamento de campos nulos na tela TelaUsuario_2_AlterarExcluir
+- (PENDENTE) Carregar jComboBox de permissao na tela TelaUsuario_2_AlterarExcluir
+- Feito tratamento de campos nulos na tela TelaUsuario_3_Cadastrar
+- (PENDENTE) Carregar jComboBox de permissao na tela TelaUsuario_3_Cadastrar
+
+> 18:10 - 19:10 // 16 HORAS E 10 MINUTOS ATÉ O MOMENTO
+- Carregar jComboBox de sexo na tela TelaBarbeiro_2_AlterarExcluir
+- Carregar jComboBox de sexo na tela TelaBarbeiro_3_Cadastrar
+- Carregar jComboBox de sexo na tela TelaCliente_2_AlterarExcluir
+- Carregar jComboBox de sexo na tela TelaCliente_3_Cadastrar
+- Carregar jComboBox de permissao na tela TelaUsuario_2_AlterarExcluir
+- Carregar jComboBox de permissao na tela TelaUsuario_3_Cadastrar
+- Configurado pesquisa na tela TelaUsuario_2_AlteraExcluir
+- Configurado cadastro de usuário em letra maiúscula
+- Feito tratamento de campos nulos na tela TelaLogin
+
+> 00:00 - 1:00 // 17 HORAS E 10 MINUTOS ATÉ O MOMENTO
+- Configurado envio de emails para cliente, barbeiro e barbearia toda vez que um agendamento for cadastrado
+
+> 19:30 - 20:10 // 17 HORAS E 50 MINUTOS ATÉ O MOMENTO
+- Configurado funcionalidade de permissionamento
+- Configurada a oção de deslogar do sistema
+
+//obrigatorio
 servico
-valor
-data
-hora
-observacao
+valor tabelado

@@ -182,6 +182,41 @@ public class ClientesDAO {
     
     }
     
+    public String RetornaEmailPorCodcliente(int codcliente){
+        
+        Connection con = ConnectionFactory.getConnection();
+        
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+        
+        String sql = "select email from clientes where codcliente = ?";
+    
+        try {
+            stmt = con.prepareStatement(sql);
+            stmt.setInt(1, codcliente);
+            
+            stmt.execute();
+            
+            rs = stmt.getResultSet();
+            
+            if(rs.next()){
+                
+                return rs.getString("email");
+                
+            }
+            
+        } catch (SQLException ex) {
+            
+            Logger.getLogger(ClientesDAO.class.getName()).log(Level.SEVERE, null, ex);
+            
+            System.out.println("Erro no método RetornaEmailPorCodcliente() na classe ClientesDAO");
+            
+        } 
+        
+        return "";
+    
+    }
+    
     public Iterable<Clientes> ListarClientes() {
         
         Connection con = ConnectionFactory.getConnection();

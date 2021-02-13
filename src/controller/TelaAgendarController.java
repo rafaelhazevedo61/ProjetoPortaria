@@ -15,6 +15,7 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import model.Agendamentos;
 import util.Data;
+import util.Email;
 import view.TelaAgendar;
 import view.TelaPrincipal;
 
@@ -98,6 +99,42 @@ public class TelaAgendarController {
                                 //PASSANDO O CONSTRUTOR DA CLASSE MODELO COMO PARÂMETRO PARA O MÉTODO NA CLASSE DAO
                                 AgendamentosDAO daox = new AgendamentosDAO(conexao);
                                 daox.CadastrarAgendamento(novoagendamento);
+                                
+                                //PASSANDO O CODCLIENTE PARA O MÉTODO EM DAO PARA RETORNAR O EMAIL DO CLIENTE
+                                ClientesDAO dao4 = new ClientesDAO(conexao);
+                                String emailCliente = dao4.RetornaEmailPorCodcliente(codcliente);
+                                System.out.println("Email do cliente é "+emailCliente);
+                                
+                                //PASSANDO O CODBARBEIRO PARA O MÉTODO EM DAO PARA RETORNAR O EMAIL DO BARBEIRO
+                                BarbeirosDAO dao5 = new BarbeirosDAO(conexao);
+                                String emailBarbeiro = dao5.RetornaEmailPorCodbarbeiro(codbarbeiro);
+                                System.out.println("Email do cliente é "+emailCliente);
+                                
+                                String emailBarbearia = "rhz.sistemas.projetos@gmail.com";
+                                
+                                //ENVIO DE EMAIL DO AGENDAMENTO - CLIENTE
+                                Email envioEmailCliente = new Email("Agendamento Barbearia xxxyyyzzz",//ASSUNTO
+                                "Segue as informações referentes a seu agendamento - cliente: " //CONTEÚDO
+                                + "Data: "+ data +" | Hora: "+hora+" | Barbeiro: "+barbeiroString+" | Serviço: "+servicoString+"",  //CONTEÚDO
+                                emailCliente); //DESTINATÁRIO
+                                
+                                //ENVIO DE EMAIL DO AGENDAMENTO - BARBEIRO
+                                Email envioEmailBarbeiro = new Email("Agendamento Barbearia xxxyyyzzz",//ASSUNTO
+                                "Segue as informações referentes a seu agendamento - barbeiro: " //CONTEÚDO
+                                + "Data: "+ data +" | Hora: "+hora+" | Cliente: "+clienteString+" | Serviço: "+servicoString+"",  //CONTEÚDO
+                                emailBarbeiro); //DESTINATÁRIO
+                                
+                                
+                                //ENVIO DE EMAIL DO AGENDAMENTO - BARBEARIA
+                                Email envioEmailBarbearia = new Email("Agendamento Barbearia xxxyyyzzz",//ASSUNTO
+                                "Segue as informações referentes a seu agendamento - barbearia: " //CONTEÚDO
+                                + "Data: "+ data +" | Hora: "+hora+" | Barbeiro: "+barbeiroString+" | Cliente: "+clienteString+" | Serviço: "+servicoString+"",  //CONTEÚDO
+                                emailBarbearia);//DESTINATÁRIO
+                                
+        
+                                envioEmailCliente.enviar();
+                                envioEmailBarbeiro.enviar();
+                                envioEmailBarbearia.enviar();
 
 
                                 } else {
