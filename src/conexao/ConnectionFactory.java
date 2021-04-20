@@ -13,10 +13,6 @@ import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-/**
- *
- * @author Samuelson
- */
 public class ConnectionFactory {
 
     private static final String DRIVER = "org.postgresql.Driver";
